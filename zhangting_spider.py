@@ -55,6 +55,10 @@ def get_article_info(name):
                 if title.find(name) <= 0:
                     break
 
+                ti_cai_text = doc(".text-justify")
+                ti_cai_text = ti_cai_text.text()
+                print("ti_cai_text:", ti_cai_text)
+
                 info = doc(".pre-line")
                 date = get_today()
                 try:
@@ -75,7 +79,7 @@ def get_article_info(name):
                         info_0 = info_arr[0] + "  " + str(change) + "%" + "  " + str(code)
                         info = info_0 + "\n" + info_arr[1]
                 print("info:", info)
-                return {"info": info, "date": date, "title": title}
+                return {"info": info, "date": date, "title": title, "ti_cai_text": ti_cai_text}
             except Exception as e:
                 logging.exception(e)
 
@@ -120,13 +124,14 @@ def save_word_text(ti_cai, test_data, print_type="A5"):
         print("val:", val)
         info = val.get("info")
         title = val.get("title")
+        ti_cai_text = val.get("ti_cai_text")
 
         # 添加标题，0表示样式为title
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
         # 添加段落
-        doc.add_paragraph(title + "\n" + info)
+        doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text)
 
     # 保存文档
     doc.save('result/{}.docx'.format(ti_cai))
