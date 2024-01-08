@@ -46,6 +46,7 @@ def get_article_info(name):
                 text = ""
                 if response.status_code == 200:
                     text = response.text
+
                 doc = pq(text)
                 title = doc(".fs28-bold")
                 title = title.text()
@@ -55,7 +56,7 @@ def get_article_info(name):
                 if title.find(name) <= 0:
                     break
 
-                ti_cai_text = doc(".text-justify")
+                ti_cai_text = doc(".mt40  > div.text-justify")
                 ti_cai_text = ti_cai_text.text()
                 print("ti_cai_text:", ti_cai_text)
 
