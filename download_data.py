@@ -14,8 +14,9 @@ def download_data(start_day, end_day):
         # 获取指定日期的A股收盘数据
         df = pro.daily(trade_date=date)
 
-        # 将DataFrame保存为CSV文件
-        df.to_csv('./close_data/收盘数据-{}.csv'.format(date))
+        if len(df) > 100:
+            # 将DataFrame保存为CSV文件
+            df.to_csv('./close_data/收盘数据-{}.csv'.format(date))
 
 
 def get_day_list(start_day, end_day):
@@ -37,6 +38,6 @@ def get_day_list(start_day, end_day):
 
 
 if __name__ == '__main__':
-    start_day = "20240102"
+    start_day = "20231130"
     end_day = "20240121"
     download_data(start_day, end_day)

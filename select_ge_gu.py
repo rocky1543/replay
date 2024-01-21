@@ -74,10 +74,13 @@ def select_ge_gu(sz_high_price_day):
     all_date_data = load_data(sz_high_price_day)
     result = {}
     for code, data in all_date_data.items():
+        print("--" * 50)
+        print("code:", code)
+        print("code_data:", data)
+
         high_price_list = []
         sz_hp_day_price_list = []
         for date, values in data.items():
-
             high = values.get("high", None)
             print("date:", date)
             print("values:", values)
@@ -90,7 +93,7 @@ def select_ge_gu(sz_high_price_day):
                 sz_hp_day_price_list.append(high)
 
         score = 0
-        if len(high_price_list) > 0:
+        if len(high_price_list) > 5:
             high_price_avg = average(high_price_list)
             sz_hp_day_price_avg = high_price_avg
             if len(sz_hp_day_price_list) > 0:
@@ -102,13 +105,13 @@ def select_ge_gu(sz_high_price_day):
                 score = round(score, 1)
                 if score > 0:
                     result[code] = score
-        print("code:", code)
-        print("data:", data)
+
         print("high_price_list:", high_price_list)
         print("sz_hp_day_price_list:", sz_hp_day_price_list)
         print("high_price_avg:", high_price_avg)
         print("sz_hp_day_price_avg:", sz_hp_day_price_avg)
         print("score:", score)
+        print("--" * 50)
 
     result = sorted(result.items(), key=lambda item: item[1], reverse=True)
     print("result:", result)
