@@ -122,12 +122,20 @@ def select_ge_gu(sz_high_price_day):
     code_map = get_code_map()
     f = open("./result/强势股.txt", "w")
     name_list = []
+    name_code_map = {}
     for val in result:
         code_info = code_map.get(val[0], {})
         name = code_info.get("名称", "")
+        if name.count("ST") > 0:
+            continue
         name_list.append(name)
         f.write(val[0] + "\n")
+        name_code_map[name] = val[0]
+
     f.flush()
+
+    print("name_code_map:", name_code_map)
+    print("name_code_map_len:", len(name_code_map))
     return name_list
 
 
@@ -148,3 +156,4 @@ if __name__ == '__main__':
     sz_high_price_day = ["20230828", "20231121", "20231229"]
     select_list = select_ge_gu(sz_high_price_day)
     print("select_list:", select_list)
+    print("select_list_len:", len(select_list))
