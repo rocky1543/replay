@@ -77,6 +77,8 @@ def select_ge_gu(sz_high_price_day):
         print("--" * 50)
         print("code:", code)
         print("code_data:", data)
+        if str(code).startswith("8"):
+            continue
 
         high_price_list = []
         sz_hp_day_price_list = []
