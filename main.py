@@ -2,7 +2,7 @@ import time
 
 import akshare as ak
 import tushare as ts
-
+import requests
 
 def test1():
     # 获取东方财富网-沪深京 A 股-实时行情
@@ -68,6 +68,12 @@ def test4():
     print(df)
     # 将DataFrame保存为CSV文件
     df.to_csv('output.csv')
+
+def test5():
+    data = {
+        "username":"",
+        "password":""
+    }
 
 
 if __name__ == '__main__':

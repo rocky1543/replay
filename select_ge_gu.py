@@ -2,11 +2,12 @@ import fnmatch
 import json
 import os
 
+import akshare as ak
 import pandas as pd
 
 
-def load_data(directory, sz_high_price_day):
-    file_list = get_files_in_directory(directory, sz_high_price_day)
+def load_data(sz_high_price_day):
+    file_list = get_files_in_directory(sz_high_price_day)
 
     all_date_data = {}
     for file in file_list:
@@ -30,13 +31,12 @@ def load_data(directory, sz_high_price_day):
             }
             all_date_data[ts_code] = each_date_data
 
-    print("each_date_data:", all_date_data.get("002176"))
     return all_date_data
 
 
-def get_files_in_directory(directory, sz_high_price_day):
+def get_files_in_directory(sz_high_price_day):
     # 获取目录下的所有文件和子目录
-    all_items = os.listdir(directory)
+    all_items = os.listdir("./close_data")
 
     # 过滤出文件
     files = [item for item in all_items if fnmatch.fnmatch(item, '*.csv')]
@@ -70,11 +70,10 @@ def get_files_in_directory(directory, sz_high_price_day):
     return select_file
 
 
-def select_ge_gu(directory, sz_high_price_day):
-    all_date_data = load_data(directory, sz_high_price_day)
+def select_ge_gu(sz_high_price_day):
+    all_date_data = load_data(sz_high_price_day)
     result = {}
     for code, data in all_date_data.items():
-
         high_price_list = []
         sz_hp_day_price_list = []
         for date, values in data.items():
@@ -114,14 +113,33 @@ def select_ge_gu(directory, sz_high_price_day):
     result = sorted(result.items(), key=lambda item: item[1], reverse=True)
     print("result:", result)
     print("resul_len:", len(result))
-    return [int(val[0]) for val in result]
+
+    code_map = get_code_map()
+    f = open("./result/强势股.txt", "w")
+    name_list = []
+    for val in result:
+        code_info = code_map.get(val[0], {})
+        name = code_info.get("名称", "")
+        name_list.append(name)
+        f.write(val[0] + "\n")
+    f.flush()
+    return name_list
 
 
 def average(numbers):
     return sum(numbers) / len(numbers)
 
 
+def get_code_map():
+    # 获取东方财富网-沪深京 A 股-实时行情
+    code_map = {}
+    df = ak.stock_zh_a_spot_em()
+    for index, row in df.iterrows():
+        code_map[row["代码"].strip()] = {"名称": row["名称"].strip(), "代码": row["代码"].strip()}
+    return code_map
+
+
 if __name__ == '__main__':
     sz_high_price_day = ["20230828", "20231121", "20231229"]
-    select_list = select_ge_gu("./close_data", sz_high_price_day)
+    select_list = select_ge_gu(sz_high_price_day)
     print("select_list:", select_list)
