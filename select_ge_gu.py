@@ -100,7 +100,9 @@ def select_ge_gu(directory, sz_high_price_day):
             if high_price_avg > sz_hp_day_price_avg:
                 score = (high_price_avg - sz_hp_day_price_avg) / sz_hp_day_price_avg
 
-        result[code] = round(score, 3)
+                score = round(score, 1)
+                if score > 0:
+                    result[code] = score
         print("code:", code)
         print("data:", data)
         print("high_price_list:", high_price_list)
@@ -109,8 +111,10 @@ def select_ge_gu(directory, sz_high_price_day):
         print("sz_hp_day_price_avg:", sz_hp_day_price_avg)
         print("score:", score)
 
-    result = sorted(result.items(), key=lambda item: item[1], reverse=True)[:100]
+    result = sorted(result.items(), key=lambda item: item[1], reverse=True)
     print("result:", result)
+    print("resul_len:", len(result))
+    return [int(val[0]) for val in result]
 
 
 def average(numbers):
@@ -119,4 +123,5 @@ def average(numbers):
 
 if __name__ == '__main__':
     sz_high_price_day = ["20230828", "20231121", "20231229"]
-    select_ge_gu("./close_data", sz_high_price_day)
+    select_list = select_ge_gu("./close_data", sz_high_price_day)
+    print("select_list:", select_list)
