@@ -131,7 +131,7 @@ def save_word_text(ti_cai, test_data, print_type="A5"):
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        zhu = "注：做首板就是要自上而下，看高做低，高位死低位生;做龙头接力要看谁是主流，二板之上谁最有人气，谁在换手后仍可以封板"
+        zhu = "注：市场氛围好的时候，做首板就是要自上而下，看高做低，高位死低位生;做龙头接力，要看谁是主流，二板之上谁最有人气，谁在换手之后仍可以封板"
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
 
