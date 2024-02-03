@@ -3,6 +3,8 @@ import time
 import akshare as ak
 import tushare as ts
 import requests
+import json
+
 
 def test1():
     # 获取东方财富网-沪深京 A 股-实时行情
@@ -69,12 +71,32 @@ def test4():
     # 将DataFrame保存为CSV文件
     df.to_csv('output.csv')
 
+
 def test5():
-    data = {
-        "username":"",
-        "password":""
-    }
+    import requests
+
+    # API密钥
+    api_key = "your_api_key"
+
+    def get_data(url):
+        headers = {
+            'X-Requested-With': 'XMLHttpRequest',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            'Referer': url,
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive'
+        }
+
+        response = requests.get(url, headers=headers)
+        data = json.loads(response.text)
+
+        return data
+
+    # 示例URL
+    example_url = "http://www.ths.com.cn/"
+    result = get_data(example_url)
+    print(result)
 
 
 if __name__ == '__main__':
-    test4()
+    test5()

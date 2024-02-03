@@ -27,7 +27,8 @@ def load_data(sz_high_price_day):
                 "open": row["open"],
                 "high": row["high"],
                 "low": row["low"],
-                "close": row["close"]
+                "close": row["close"],
+                "pct_chg": row["pct_chg"]
             }
             all_date_data[ts_code] = each_date_data
 
@@ -68,6 +69,58 @@ def get_files_in_directory(sz_high_price_day):
     print("select_files_len:", len(select_file))
 
     return select_file
+
+
+def select_lian_xu_zhang_ting():
+    all_date_data = load_data([])
+    select_code_list = []
+    for code, data in all_date_data.items():
+        if len(data) < 5:
+            continue
+        if str(code).startswith("8"):
+            continue
+        # if code != "002146":
+        #     continue
+
+        data = sorted(data.items(), key=lambda x: x[0])
+        print("--" * 50)
+        print("code:", code)
+        print("code_data:", data)
+
+        bef = False
+        for date, values in data:
+            high = values.get("high", None)
+            close = values.get("close", None)
+            pct_chg = values.get("pct_chg", None)
+            print("date:", date)
+            print("high:", high)
+            print("close:", close)
+            print("pct_chg:", pct_chg)
+            if high == close and pct_chg > 9:
+                if bef:
+                    select_code_list.append(code)
+                    break
+                else:
+                    bef = True
+            else:
+                bef = False
+
+    print("select_code_list:", select_code_list)
+    print("select_code_list_len:", len(select_code_list))
+
+    code_map = get_code_map()
+    name_code_map = {}
+    f = open("./result/连板股.txt", "w")
+    f.write(",".join(select_code_list))
+    f.flush()
+
+    for code in select_code_list:
+        code_info = code_map.get(code, {})
+        name = code_info.get("名称", "")
+        if name.count("ST") > 0:
+            continue
+        name_code_map[name] = code
+    print("name_code_map:", name_code_map)
 
 
 def select_ge_gu(sz_high_price_day):
@@ -123,15 +176,18 @@ def select_ge_gu(sz_high_price_day):
     f = open("./result/强势股.txt", "w")
     name_list = []
     name_code_map = {}
+    code_list = []
     for val in result:
         code_info = code_map.get(val[0], {})
         name = code_info.get("名称", "")
         if name.count("ST") > 0:
             continue
         name_list.append(name)
-        f.write(val[0] + "\n")
+        code_list.append(val[0])
+
         name_code_map[name] = val[0]
 
+    f.write(",".join(code_list))
     f.flush()
 
     print("name_code_map:", name_code_map)
@@ -153,7 +209,8 @@ def get_code_map():
 
 
 if __name__ == '__main__':
-    sz_high_price_day = ["20230828", "20231121", "20231229"]
-    select_list = select_ge_gu(sz_high_price_day)
-    print("select_list:", select_list)
-    print("select_list_len:", len(select_list))
+    # sz_high_price_day = ["20230828", "20231121", "20231229"]
+    # select_list = select_ge_gu(sz_high_price_day)
+    select_lian_xu_zhang_ting()
+    # print("select_list:", select_list)
+    # print("select_list_len:", len(select_list))

@@ -38,6 +38,6 @@ def get_day_list(start_day, end_day):
 
 
 if __name__ == '__main__':
-    start_day = "20240122"
-    end_day = "20240127"
+    start_day = "20240125"
+    end_day = "20240203"
     download_data(start_day, end_day)
