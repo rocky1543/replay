@@ -111,15 +111,18 @@ def select_lian_xu_zhang_ting():
     code_map = get_code_map()
     name_code_map = {}
     f = open("./result/连板股.txt", "w")
-    f.write(",".join(select_code_list))
-    f.flush()
 
+    result_code_list = []
     for code in select_code_list:
         code_info = code_map.get(code, {})
         name = code_info.get("名称", "")
         if name.count("ST") > 0:
             continue
         name_code_map[name] = code
+        result_code_list.append(code)
+
+    f.write(",".join(result_code_list))
+    f.flush()
     print("name_code_map:", name_code_map)
 
 
@@ -209,7 +212,7 @@ def get_code_map():
 
 
 if __name__ == '__main__':
-    # sz_high_price_day = ["20230828", "20231121", "20231229"]
+    sz_high_price_day = ["20230828", "20231121", "20231229"]
     # select_list = select_ge_gu(sz_high_price_day)
     select_lian_xu_zhang_ting()
     # print("select_list:", select_list)
