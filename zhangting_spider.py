@@ -13,6 +13,24 @@ from docx.shared import Pt, RGBColor
 from pyquery import PyQuery as pq
 
 code_map = {}
+emotional_cycle_action = {
+    1: {
+        "cycle": "龙头主升一致期",
+        "action": "发散龙头bc属性，做龙头1板补涨"
+    },
+    2: {
+        "cycle": "龙头pk||市场分歧期",
+        "action": "看情况做龙头，如果龙头没死预期，也可以发散龙头bc属性，做1板补涨"
+    },
+    3: {
+        "cycle": "龙头断板退潮期",
+        "action": "逃离高位，做龙头属性abc题材or新题材1，2板低位补涨龙"
+    },
+    4: {
+        "cycle": "龙头无高度混沌期",
+        "action": "老龙头无高度，高度被压制，没有赚钱效应，最好空仓"
+    },
+}
 
 
 def get_article_info(name):
@@ -90,7 +108,7 @@ def get_today():
     return now.strftime("%Y-%m-%d")
 
 
-def save_word_text(ti_cai, test_data, print_type="A5"):
+def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle_and_action, print_type="A5"):
     # 创建文档
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
@@ -113,7 +131,7 @@ def save_word_text(ti_cai, test_data, print_type="A5"):
     section.bottom_margin = Cm(1.27)
 
     add_page_break = False
-    for key, val in test_data.items():
+    for key, val in info_map.items():
         if print_type == "A5":
             # 分页符
             if not add_page_break:
@@ -131,8 +149,12 @@ def save_word_text(ti_cai, test_data, print_type="A5"):
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        zhu = "注：首板要自上而下，看高做低，高低联动;  龙头接力要看谁是主流，二板之上谁最有人气;  每日三问：pk淘汰赛在哪里，还会不会继续，优中选优，谁是第一名"
+        zhu1 = "节点: {}".format(cycle_and_action.get("cycle"))
+        zhu2 = "计划: {}".format(cycle_and_action.get("action"))
+        zhu3 = "老龙高度: {}板，当前龙属性:{}".format(lao_long_gao_du, ",".join(long_attribute_list))
+        zhu4 = "注: 自上而下，看高做低，pk淘汰赛在哪里，会不会继续，谁是第一名"
 
+        zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
 
@@ -191,5 +213,14 @@ if __name__ == '__main__':
         if len(info_map) <= 0:
             continue
 
+        # 老龙高度，当前情绪周期节点，计划
+        lao_long_gao_du = 13
+
+        # 老龙属性范围
+        long_attribute_list = ["氢能源", "cpo", "机器人"]
+
+        # 1:一致，2：分歧，3：退潮，4：混沌
+        cycle_and_action = emotional_cycle_action.get(1)
+
         # 保存到word
-        save_word_text(ti_cai, info_map)
+        save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle_and_action)
