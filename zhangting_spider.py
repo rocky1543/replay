@@ -13,6 +13,7 @@ from docx.shared import Pt, RGBColor
 from pyquery import PyQuery as pq
 
 code_map = {}
+zhang_ting_number_map = {}
 emotional_cycle_action = {
     1: {
         "cycle": "龙头主升一致期",
@@ -88,6 +89,7 @@ def get_article_info(name):
                 info = str(info).replace("<div class=\"pre-line\" data-v-bd88e066=\"\">", "")
                 info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
+                zhang_ting_number = zhang_ting_number_map.get(name, "")
                 if code_info:
                     change = code_info.get("涨跌幅", None)
                     code = code_info.get("代码", None)
@@ -95,7 +97,7 @@ def get_article_info(name):
                     print("code:", code)
                     if code and change and info:
                         info_arr = info.split("\n", 1)
-                        info_0 = info_arr[0] + "  " + str(change) + "%" + "  " + str(code)
+                        info_0 = info_arr[0] + "  " + str(change) + "%" + "  " + zhang_ting_number + "  " + str(code)
                         info = info_0 + "\n" + info_arr[1]
                 print("info:", info)
                 return {"info": info, "date": date, "title": title, "ti_cai_text": ti_cai_text}
@@ -168,7 +170,16 @@ def get_timestamp(date):
 
 
 def get_zhang_ting_list(file):
-    return [line.strip() for line in open(file) if line and line.strip()]
+    name_list = []
+    for line in open(file):
+        if line:
+            data = line.strip().split(",")
+            name_list.append(data[0])
+            number = 0
+            if data[1]:
+                number = data[1]
+            zhang_ting_number_map[data[0]] = number + "板"
+    return name_list
 
 
 def get_zhang_ting_map(ti_cai_list):
