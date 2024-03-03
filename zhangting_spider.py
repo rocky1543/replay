@@ -17,15 +17,18 @@ zhang_ting_number_map = {}
 emotional_cycle_action = {
     1: {
         "cycle": "龙头主升一致期",
-        "action": "发散龙头bc属性，做龙头1板补涨"
+        "action": "发散龙头bc属性，做龙头1板补涨",
+        "profit_space": "新龙当前高度和老龙的高度差"
     },
     2: {
         "cycle": "龙头pk||市场分歧期",
-        "action": "看情况做龙头，如果龙头没死预期，也可以发散龙头bc属性，做1板补涨"
+        "action": "看情况做龙头，如果龙头没死预期，也可以发散龙头bc属性，做1板补涨",
+        "profit_space": "新龙当前高度和老龙的高度差"
     },
     3: {
         "cycle": "龙头断板退潮期",
-        "action": "逃离高位，做龙头属性abc题材or新题材1，2板低位补涨龙"
+        "action": "逃离高位，做龙头属性abc题材or新题材1，2板低位补涨龙",
+        "profit_space": "2、3板和老龙的高度差"
     },
     4: {
         "cycle": "龙头无高度混沌期",
@@ -151,9 +154,9 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        zhu1 = "节点: {}".format(cycle_and_action.get("cycle"))
-        zhu2 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu3 = "老龙高度: {}板，当前龙属性: {}".format(lao_long_gao_du, ", ".join(long_attribute_list))
+        zhu1 = "节点: {}, 空间: {}".format(cycle_and_action.get("cycle"), cycle_and_action.get("profit_space"))
+        zhu2 = "老龙高度: {}板，当前龙属性: {}".format(lao_long_gao_du, ", ".join(long_attribute_list))
+        zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         zhu4 = "注: 自上而下，看高做低，pk淘汰赛在哪里，会不会继续，谁是第一名"
 
         zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4
