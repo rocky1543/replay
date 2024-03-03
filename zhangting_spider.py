@@ -153,7 +153,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle
 
         zhu1 = "节点: {}".format(cycle_and_action.get("cycle"))
         zhu2 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu3 = "老龙高度: {}板，当前龙属性:{}".format(lao_long_gao_du, ",".join(long_attribute_list))
+        zhu3 = "老龙高度: {}板，当前龙属性: {}".format(lao_long_gao_du, ",".join(long_attribute_list))
         zhu4 = "注: 自上而下，看高做低，pk淘汰赛在哪里，会不会继续，谁是第一名"
 
         zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4
