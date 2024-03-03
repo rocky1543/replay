@@ -154,7 +154,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        zhu1 = "节点: {}, 空间: {}".format(cycle_and_action.get("cycle"), cycle_and_action.get("profit_space"))
+        zhu1 = "节点: {}， 套利空间: {}".format(cycle_and_action.get("cycle"), cycle_and_action.get("profit_space"))
         zhu2 = "老龙高度: {}板，当前龙属性: {}".format(lao_long_gao_du, ", ".join(long_attribute_list))
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         zhu4 = "注: 自上而下，看高做低，pk淘汰赛在哪里，会不会继续，谁是第一名"
