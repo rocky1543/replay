@@ -175,7 +175,7 @@ def get_timestamp(date):
 def get_zhang_ting_list(file):
     name_list = []
     for line in open(file):
-        if line:
+        if line.strip():
             data = line.strip().split(",")
             name_list.append(data[0])
             number = 0

@@ -71,7 +71,7 @@ def get_files_in_directory(sz_high_price_day):
     return select_file
 
 
-def select_lian_xu_zhang_ting():
+def select_lian_xu_zhang_ting(lian_ban_num):
     all_date_data = load_data([])
     select_code_list = []
     for code, data in all_date_data.items():
@@ -87,7 +87,7 @@ def select_lian_xu_zhang_ting():
         print("code:", code)
         print("code_data:", data)
 
-        bef = False
+        true_list = []
         for date, values in data:
             high = values.get("high", None)
             close = values.get("close", None)
@@ -97,13 +97,12 @@ def select_lian_xu_zhang_ting():
             print("close:", close)
             print("pct_chg:", pct_chg)
             if high == close and pct_chg > 9:
-                if bef:
+                true_list.append(1)
+                if len(true_list) >= lian_ban_num:
                     select_code_list.append(code)
                     break
-                else:
-                    bef = True
             else:
-                bef = False
+                true_list = []
 
     print("select_code_list:", select_code_list)
     print("select_code_list_len:", len(select_code_list))
@@ -214,6 +213,9 @@ def get_code_map():
 if __name__ == '__main__':
     sz_high_price_day = ["20230828", "20231121", "20231229"]
     # select_list = select_ge_gu(sz_high_price_day)
-    select_lian_xu_zhang_ting()
+
+    # 最近15天的连板数量
+    lian_ban_num = 3
+    select_lian_xu_zhang_ting(lian_ban_num)
     # print("select_list:", select_list)
     # print("select_list_len:", len(select_list))
