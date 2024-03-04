@@ -118,7 +118,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
     doc.styles['Normal'].element.rPr.rFonts.set(qn('w:eastAsia'), u'宋体')
-    doc.styles['Normal'].font.size = Pt(11)
+    doc.styles['Normal'].font.size = Pt(10)
     doc.styles['Normal'].font.color.rgb = RGBColor(0, 0, 0)
 
     # 设置页面大小为A5
@@ -157,7 +157,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle
         zhu1 = "节点: {}， 套利空间: {}".format(cycle_and_action.get("cycle"), cycle_and_action.get("profit_space"))
         zhu2 = "老龙高度: {}板，当前龙属性: {}".format(lao_long_gao_du, ", ".join(long_attribute_list))
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu4 = "注: 自上而下，看高做低，pk淘汰赛在哪里，会不会继续，谁是第一名"
+        zhu4 = "注: 时机、属性、空间、身位、实力；自上而下，看高做低；pk淘汰赛在哪里，会不会继续，谁是第一名"
 
         zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4
         # 添加段落
