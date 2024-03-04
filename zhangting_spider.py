@@ -113,7 +113,7 @@ def get_today():
     return now.strftime("%Y-%m-%d")
 
 
-def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle_and_action, print_type="A5"):
+def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_type="A5"):
     # 创建文档
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
@@ -154,8 +154,8 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        zhu1 = "节点: {}， 套利空间: {}".format(cycle_and_action.get("cycle"), cycle_and_action.get("profit_space"))
-        zhu2 = "老龙高度: {}板，当前龙属性: {}".format(lao_long_gao_du, ", ".join(long_attribute_list))
+        zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
+        zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         zhu4 = "注: 时机、属性、空间、身位、实力；自上而下，看高做低；pk淘汰赛在哪里，会不会继续，谁是第一名"
 
@@ -230,11 +230,8 @@ if __name__ == '__main__':
         # 老龙高度，当前情绪周期节点，计划
         lao_long_gao_du = 13
 
-        # 老龙属性范围
-        long_attribute_list = ["氢能源", "cpo", "机器人"]
-
         # 1:一致，2：分歧，3：退潮，4：混沌
         cycle_and_action = emotional_cycle_action.get(1)
 
         # 保存到word
-        save_word_text(ti_cai, info_map, lao_long_gao_du, long_attribute_list, cycle_and_action)
+        save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action)
