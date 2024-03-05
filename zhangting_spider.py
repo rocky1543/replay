@@ -21,8 +21,8 @@ emotional_cycle_action = {
         "profit_space": "新龙当前高度和老龙的高度差"
     },
     2: {
-        "cycle": "龙头pk||市场分歧期",
-        "action": "看情况做龙头，如果龙头没死预期，也可以发散龙头bc属性，做1板补涨",
+        "cycle": "龙头pk或市场分歧期",
+        "action": "做龙头or发散龙头bc属性，做1板补涨",
         "profit_space": "新龙当前高度和老龙的高度差"
     },
     3: {
@@ -231,7 +231,7 @@ if __name__ == '__main__':
         lao_long_gao_du = 13
 
         # 1:一致，2：分歧，3：退潮，4：混沌
-        cycle_and_action = emotional_cycle_action.get(1)
+        cycle_and_action = emotional_cycle_action.get(2)
 
         # 保存到word
         save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action)
