@@ -178,10 +178,9 @@ def get_zhang_ting_list(file):
         if line.strip():
             data = line.strip().split(",")
             name_list.append(data[0])
-            number = 0
-            if data[1]:
+            if len(data) == 2 and data[1]:
                 number = data[1]
-            zhang_ting_number_map[data[0]] = number + "板"
+                zhang_ting_number_map[data[0]] = number + "板"
     return name_list
 
 
