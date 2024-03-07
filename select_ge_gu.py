@@ -215,7 +215,7 @@ if __name__ == '__main__':
     # select_list = select_ge_gu(sz_high_price_day)
 
     # 最近15天的连板数量
-    lian_ban_num = 3
+    lian_ban_num = 2
     select_lian_xu_zhang_ting(lian_ban_num)
     # print("select_list:", select_list)
     # print("select_list_len:", len(select_list))
