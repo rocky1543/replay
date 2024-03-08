@@ -1,4 +1,5 @@
 import tushare as ts
+import os
 
 
 def download_data(start_day, end_day):
@@ -10,13 +11,18 @@ def download_data(start_day, end_day):
 
     day_list = get_day_list(start_day, end_day)
     for date in day_list:
-        print("download_data_day:", date)
+        file = './close_data/收盘数据-{}.csv'.format(date)
+        if os.path.exists(file):
+            print("continue file:", file)
+            continue
+
+        print("download file:", file)
         # 获取指定日期的A股收盘数据
         df = pro.daily(trade_date=date)
 
         if len(df) > 100:
             # 将DataFrame保存为CSV文件
-            df.to_csv('./close_data/收盘数据-{}.csv'.format(date))
+            df.to_csv(file)
 
 
 def get_day_list(start_day, end_day):
@@ -38,6 +44,6 @@ def get_day_list(start_day, end_day):
 
 
 if __name__ == '__main__':
-    start_day = "20240309"
+    start_day = "20240209"
     end_day = "20240309"
     download_data(start_day, end_day)
