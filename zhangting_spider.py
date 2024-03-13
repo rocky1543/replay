@@ -157,8 +157,8 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
         zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu4 = "注1: 大把机会，你越是急着找一样东西，越是偏偏找不到，聪明的话根本不用找，他会慢慢自己出来"
-        zhu5 = "注2: 时机、属性、空间、身位、实力；自上而下，看高做低；pk淘汰赛在哪里，会不会继续，谁是第一名"
+        zhu4 = "注: 大把机会，你越是急着找一样东西，越是偏偏找不到，聪明的话根本不用找，他会慢慢自己出来"
+        zhu5 = "注: 时机、属性、空间、身位、实力；自上而下，看高做低；pk淘汰赛在哪里，会不会继续，谁是第一名"
 
         zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4 + "\n" + zhu5
         # 添加段落
@@ -231,7 +231,7 @@ if __name__ == '__main__':
         # 个股标签：1:最强龙头，2:缩量秒板跟风，3:放量换手跟风，4:放量弱板跟风，5:老周期中高位
 
         # 1:一致，2：分歧，3：退潮，4：混沌
-        cycle_and_action = emotional_cycle_action.get(4)
+        cycle_and_action = emotional_cycle_action.get(2)
 
         # 保存到word
         save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action)
