@@ -181,11 +181,11 @@ def filter_by_keyword(keyword_list):
     name_list = []
     for line in open("./result/连板股详情.txt").readlines():
         name, info = line.strip().split("\t")
-        for keyword in keyword_list:
-            if info.count(keyword) > 0:
-                print("name:", name)
-                print("info:", info)
-                name_list.append(name.strip())
+        # for keyword in keyword_list:
+        #     if info.count(keyword) > 0:
+        #         print("name:", name)
+        #         print("info:", info)
+        name_list.append(name.strip())
 
     return name_list
 
@@ -194,11 +194,19 @@ if __name__ == '__main__':
     # 最近15天的连板数量
     lian_ban_num = 2
 
-    get_info = True
+    get_info = False
     if get_info:
         get_ge_gu_info(lian_ban_num)
 
     keyword_list = ["算力"]
     name_list = filter_by_keyword(keyword_list)
 
+    print("name_list_len:", len(name_list))
     print("name_list:", ",".join(name_list))
+
+    name_list_tmp = []
+    for i, name in enumerate(name_list):
+        name_list_tmp.append(name)
+        if len(name_list_tmp) >= 50 or i == len(name_list) - 1:
+            print("name_list_tmp:", ",".join(name_list_tmp))
+            name_list_tmp = []
