@@ -206,7 +206,8 @@ if __name__ == '__main__':
 
     name_list_tmp = []
     for i, name in enumerate(name_list):
-        name_list_tmp.append(name)
-        if len(name_list_tmp) >= 50 or i == len(name_list) - 1:
-            print("name_list_tmp:", ",".join(name_list_tmp))
-            name_list_tmp = []
+        print(name)
+        # name_list_tmp.append(name)
+        # if len(name_list_tmp) >= 50 or i == len(name_list) - 1:
+        #     print("name_list_tmp:", ",".join(name_list_tmp))
+        #     name_list_tmp = []
