@@ -160,7 +160,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         zhu4 = "你越是急着找一样东西，越是找不到，要的多，得之少"
         zhu5 = "时机、属性、空间、身位、实力；自上而下，pk淘汰赛在哪里，有没有持续性，谁是最强大哥\n" \
-               "虚灵顶劲，通顺的最佳状态，复盘任务：通过强中强思想找大哥，"
+               "虚灵顶劲，通顺的最佳状态，复盘任务：通过强中强思想找大哥"
 
         zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4 + "；" + zhu5
         # 添加段落
