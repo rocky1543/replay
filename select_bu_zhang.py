@@ -194,7 +194,7 @@ if __name__ == '__main__':
     # 最近15天的连板数量
     lian_ban_num = 2
 
-    get_info = False
+    get_info = True
     if get_info:
         get_ge_gu_info(lian_ban_num)
 

@@ -17,17 +17,17 @@ zhang_ting_di_wei_tag = {}
 emotional_cycle_action = {
     1: {
         "cycle": "龙头主升一致期",
-        "action": "发散龙头bc属性，做龙头1板补涨",
+        "action": "做龙头属性补涨",
         "profit_space": "新龙当前高度和老龙的高度差"
     },
     2: {
         "cycle": "龙头pk或市场分歧期",
-        "action": "做龙头or发散龙头bc属性，做1板补涨",
+        "action": "做龙头or做龙头属性补涨",
         "profit_space": "新龙当前高度和老龙的高度差"
     },
     3: {
         "cycle": "龙头断板退潮期",
-        "action": "逃离高位，做龙头属性abc题材or新题材1，2板低位补涨龙",
+        "action": "逃离高位，做龙头属性补涨or新题材低位补涨龙",
         "profit_space": "2、3板和老龙的高度差"
     },
     4: {
@@ -91,6 +91,7 @@ def get_article_info(name):
 
                 info = str(info).replace("<div class=\"pre-line\" data-v-bd88e066=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-421de0aa=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-16e07e86=\"\">", "")
                 info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
@@ -158,9 +159,9 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
         zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu4 = "你越是急着找一样东西，越是找不到，要的多，得之少"
+        zhu4 = "越是急着，越是找不到，要的多，得之少, 要学会三天打鱼四天晒网，要懒一点"
         zhu5 = "时机、属性、空间、身位、实力；自上而下，pk淘汰赛在哪里，有没有持续性，谁是最强大哥\n" \
-               "虚灵顶劲，通顺的最佳状态，复盘任务：通过强中强思想找每个主流题材的大哥"
+               "虚灵顶劲，复盘任务：通过强中强思想找每个主流题材的大哥"
 
         zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4 + "；" + zhu5
         # 添加段落
@@ -233,7 +234,7 @@ if __name__ == '__main__':
         # 个股标签：1:最强龙头，2:缩量秒板跟风，3:放量换手跟风，4:放量弱板跟风，5:老周期中高位
 
         # 1:一致，2：分歧，3：退潮，4：混沌
-        cycle_and_action = emotional_cycle_action.get(2)
+        cycle_and_action = emotional_cycle_action.get(1)
 
         # 保存到word
         save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action)
