@@ -159,11 +159,13 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
         zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu4 = "越是急着，越是找不到，多则惑, 要学会三天打鱼四天晒网，懒一点"
+        zhu4 = "越是急着，越是找不到，多则惑, 要学会三天打鱼四天晒网，不是风动，不是幡动，是心在动，懒一点"
         zhu5 = "时机、属性、空间、身位、实力；自上而下，pk淘汰赛在哪里，有没有持续性，谁是最强大哥\n" \
                "虚灵顶劲，复盘任务：通过强中强思想找每个主流题材的大哥"
 
-        zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4 + "；" + zhu5
+        zhu = ""
+        if print_type == "A5":
+            zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4 + "；" + zhu5
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
 
