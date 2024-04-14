@@ -160,7 +160,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         zhu4 = "越是急着，越是找不到，多则惑, 要学会三天打鱼四天晒网，不是风动，不是幡动，是心在动，懒一点"
-        zhu5 = "时机、属性、空间、身位、实力；自上而下，pk淘汰赛在哪里，有没有持续性，谁是最强大哥\n" \
+        zhu5 = "天时地利人和，任何一场胜利，都是以强胜弱，以多胜少，要自上而下，pk淘汰赛在哪里，谁是最强大哥\n" \
                "虚灵顶劲，复盘任务：通过强中强思想找每个主流题材的大哥"
 
         zhu = ""
@@ -239,4 +239,4 @@ if __name__ == '__main__':
         cycle_and_action = emotional_cycle_action.get(1)
 
         # 保存到word
-        save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action)
+        save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, "A5")
