@@ -156,16 +156,16 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
-        zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
-        zhu3 = "计划: {}".format(cycle_and_action.get("action"))
+        # zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
+        # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
+        # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         zhu4 = "越是急着，越是找不到，多则惑, 要学会三天打鱼四天晒网，不是风动，不是幡动，是心在动，懒一点"
-        zhu5 = "天时地利人和，任何一场胜利，都是以强胜弱，以多胜少，要自上而下，pk淘汰赛在哪里，谁是最强大哥\n" \
+        zhu5 = "天时地利人和，任何一场战争都是以强胜弱，以多胜少，狮子打兔子，杀鸡用牛刀，没有这个条件只能等，要自上而下，pk淘汰赛在哪里，谁是最强大哥\n" \
                "虚灵顶劲，复盘任务：通过强中强思想找每个主流题材的大哥"
 
         zhu = ""
         if print_type == "A5":
-            zhu = zhu1 + "\n" + zhu2 + "\n" + zhu3 + "\n" + zhu4 + "；" + zhu5
+            zhu = zhu4 + "；" + zhu5
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
 
