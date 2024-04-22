@@ -159,7 +159,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         # zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
         # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu4 = "越是急着，越是找不到，懒一点，不是风动，不是幡动，是心在动，只抓主要矛盾，"
+        zhu4 = "越是急着，越是找不到，懒一点，不是风动，不是幡动，是心在动，只抓主要矛盾，有时候，亏了也是对的，"
         zhu5 = "任何一场战争都是以强胜弱，以多胜少，狮子打兔子，牛刀杀鸡，没有这个条件只能等，主线在哪里，谁是最人气核心\n" \
                "虚灵顶劲，复盘核心：自上而下：1、先找明天的主流；2、再找主流的人气核心"
 
