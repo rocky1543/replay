@@ -1,6 +1,7 @@
 # encoding: utf-8
 import logging
 import re
+import time
 from datetime import datetime
 
 import akshare as ak
@@ -40,13 +41,15 @@ emotional_cycle_action = {
 def get_article_info(name):
     print("------------------------------")
     text = ""
-    for _ in range(2):
+    for _ in range(20):
         try:
             jiucai_url = 'https://www.jiuyangongshe.com/search/new?k={}&type=5'.format(name)
             print("jiucai_url:", jiucai_url)
             response = requests.get(jiucai_url, allow_redirects=False)
-            if response.status_code == 200:
+            if response.status_code == 200 and response.text.count("股票异动解析") > 0:
                 text = response.text
+            time.sleep(0.5)
+            # print("text:", text)
         except Exception as e:
             logging.error(e)
         if text:
