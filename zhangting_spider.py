@@ -94,7 +94,7 @@ def get_article_info(name):
 
                 info = str(info).replace("<div class=\"pre-line\" data-v-d26d8538=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-421de0aa=\"\">", "")
-                info = str(info).replace("<div class=\"pre-line\" data-v-16e07e86=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-cc3c77b4=\"\">", "")
                 info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
@@ -162,9 +162,9 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         # zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
         # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu4 = "越是急着，越是找不到，不是风动，不是幡动，是心在动，只抓主要矛盾，有时候亏了也是对的"
+        zhu4 = "越是急着，越是找不到，不是风动，不是幡动，是心在动"
         zhu5 = "任何一场战争都是以强胜弱，以多胜少，狮子打兔子，牛刀杀鸡，没有这个条件只能等\n" \
-               "虚灵顶劲，复盘核心：自上而下：1、明天的主流是哪个，为什么；2、主流的人气核心是哪个，为什么"
+               "虚灵顶劲，复盘核心：自上而下：1、先研究主流题材；2、再研究主流题材人气核心标的"
 
         zhu = ""
         if print_type == "A5":
