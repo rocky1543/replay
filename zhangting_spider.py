@@ -95,6 +95,7 @@ def get_article_info(name):
                 info = str(info).replace("<div class=\"pre-line\" data-v-d26d8538=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-421de0aa=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-cc3c77b4=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-28f26548=\"\">", "")
                 info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
@@ -162,7 +163,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         # zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
         # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
-        zhu4 = "越是急着，越是找不到，不是风动，不是幡动，是心在动"
+        zhu4 = "亏钱永远比赚钱容易，越是急着，越是找不到，当个傻子吧，不是风动，不是幡动，是心在动"
         zhu5 = "任何一场战争都是以强胜弱，以多胜少，狮子打兔子，牛刀杀鸡，没有这个条件只能等\n" \
                "虚灵顶劲，复盘核心：自上而下：1、先研究主流题材；2、再研究主流题材人气核心标的"
 
