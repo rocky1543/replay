@@ -92,7 +92,7 @@ def get_article_info(name):
                 except Exception as e:
                     logging.exception(e)
 
-                info = str(info).replace("<div class=\"pre-line\" data-v-d26d8538=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-855c39ec=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-421de0aa=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-cc3c77b4=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-28f26548=\"\">", "")
@@ -142,6 +142,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
     section.bottom_margin = Cm(1.27)
 
     add_page_break = False
+    first_page = True
     for key, val in info_map.items():
         if print_type == "A5":
             # 分页符
@@ -170,10 +171,11 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
                "虚灵顶劲，复盘核心：自上而下：1、先研究主流题材；2、再研究主流题材人气核心标的"
 
         zhu = ""
-        if print_type == "A5":
+        if print_type == "A5" and first_page:
             zhu = zhu4 + "；" + zhu5
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
+        first_page = False
 
     # 保存文档
     doc.save('result/{}.docx'.format(ti_cai))
