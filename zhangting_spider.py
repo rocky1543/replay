@@ -171,7 +171,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
                "虚灵顶劲，复盘核心：自上而下：1、先研究主流题材；2、再研究主流题材人气核心标的"
 
         zhu = ""
-        if print_type == "A5" and first_page:
+        if first_page:
             zhu = zhu4 + "；" + zhu5
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
