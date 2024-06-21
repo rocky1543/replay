@@ -167,7 +167,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         zhu4 = "亏钱永远比赚钱容易，因为市场不好的时候，亏得最惨的一般都是追高的，" \
                "市场好的时候，涨起来的是因为新闻助推的，方向是随机，你不一定跟得上\n" \
                "越是急着，越是找不到，当个傻子吧，不是风动，不是幡动，是心在动"
-        zhu5 = "任何一场战争都是以强胜弱，以多胜少，狮子打兔子，牛刀杀鸡，没有这个条件只能等\n" \
+        zhu5 = "任何一场博弈都是以强胜弱，以多胜少，狮子打兔子，牛刀杀鸡，没有这个条件只能等\n" \
                "虚灵顶劲，复盘核心：自上而下：1、先研究主流题材；2、再研究主流题材人气核心标的"
 
         zhu = ""
@@ -247,4 +247,4 @@ if __name__ == '__main__':
         cycle_and_action = emotional_cycle_action.get(1)
 
         # 保存到word
-        save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, "A5")
+        save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, "A4")
