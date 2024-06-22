@@ -94,7 +94,7 @@ def get_article_info(name):
 
                 info = str(info).replace("<div class=\"pre-line\" data-v-855c39ec=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-421de0aa=\"\">", "")
-                info = str(info).replace("<div class=\"pre-line\" data-v-cc3c77b4=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-0aa83f20=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-28f26548=\"\">", "")
                 info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
@@ -169,7 +169,8 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
                "越是急着，越是找不到，当个傻子吧，不是风动，不是幡动，是心在动"
         zhu5 = "任何一场博弈，完胜的条件是以多胜少，以强胜弱，牛刀杀鸡，狮子打兔子，" \
                "要有绝对的，压倒性的优势，如果没有这个条件只能等\n" \
-               "虚灵顶劲，复盘核心：自上而下：1、先研究主流题材；2、再研究主流题材人气核心标的"
+               "虚灵顶劲，复盘：自上而下：1、先研究主流题材；2、再研究主流题材人气核心标的; " \
+               "看盘要找出每一个板块异动上涨的原因"
 
         zhu = ""
         if first_page:
