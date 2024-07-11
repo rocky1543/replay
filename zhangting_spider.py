@@ -195,7 +195,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         zhu = ""
         if first_page:
             for i, yu_lu in enumerate(yu_lu_list):
-                zhu = zhu + "{}、{}\n".format(i + 1, yu_lu)
+                zhu = zhu + "{}、{}\n".format(i + 10, yu_lu)
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
         first_page = False
