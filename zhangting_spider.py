@@ -39,6 +39,7 @@ emotional_cycle_action = {
 
 
 def get_proxies(proxy_ip):
+    # 官网：https://www.qg.net/doc/1697.html
     authKey = "03WMRTUF"
     password = "9D76ED4CAB2E"
     proxyUrl = "http://{}:{}@{}".format(authKey, password, proxy_ip)
