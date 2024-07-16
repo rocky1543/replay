@@ -268,6 +268,7 @@ def get_proxy_ip():
 if __name__ == '__main__':
 
     # IP代理官网：https://www.qg.net/user/proxyipResource
+    # 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
 
     # 获取个股代码
     get_code_map()
