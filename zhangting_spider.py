@@ -1,11 +1,11 @@
 # encoding: utf-8
+import akshare as ak
+import json
 import logging
 import re
+import requests
 import time
 from datetime import datetime
-
-import akshare as ak
-import requests
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
@@ -38,14 +38,29 @@ emotional_cycle_action = {
 }
 
 
-def get_article_info(name):
+def get_proxies(proxy_ip):
+    authKey = "03WMRTUF"
+    password = "9D76ED4CAB2E"
+    proxyUrl = "http://{}:{}@{}".format(authKey, password, proxy_ip)
+    return {
+        "http": proxyUrl,
+        "https": proxyUrl
+    }
+
+
+def get_article_info(name, proxy_ip):
     print("------------------------------")
+    proxies = get_proxies(proxy_ip)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    }
+    print("proxies:", proxies)
     text = ""
     for _ in range(20):
         try:
             jiucai_url = 'https://www.jiuyangongshe.com/search/new?k={}&type=5'.format(name)
             print("jiucai_url:", jiucai_url)
-            response = requests.get(jiucai_url, allow_redirects=False)
+            response = requests.get(jiucai_url, headers=headers, proxies=proxies)
             if response.status_code == 200 and response.text.count("股票异动解析") > 0:
                 text = response.text
             time.sleep(0.5)
@@ -67,7 +82,7 @@ def get_article_info(name):
             try:
                 href_full_url = "https://www.jiuyangongshe.com{}".format(href)
                 print("href_full_url:", href_full_url)
-                response = requests.get(href_full_url, allow_redirects=False)
+                response = requests.get(href_full_url, headers=headers, proxies=proxies)
                 text = ""
                 if response.status_code == 200:
                     text = response.text
@@ -194,7 +209,6 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
             "市场好的时候，涨起来的是因为新闻助推的，方向是随机，你不一定跟得上"
         ]
 
-
         zhu = ""
         if first_page:
             for i, yu_lu in enumerate(yu_lu_list):
@@ -238,6 +252,18 @@ def get_code_map():
         code_map[row["名称"].strip()] = {"代码": row["代码"].strip(), "涨跌幅": row["涨跌幅"]}
 
 
+def get_proxy_ip():
+    # 青果网络的API地址和参数
+    api_url = "https://share.proxy.qg.net/get?key=03WMRTUF&num=1&distinct=true"
+
+    response = requests.get(api_url)
+    data = json.loads(response.text)
+    data = data.get("data", [])
+
+    server_list = [val.get("server") for val in data]
+    return server_list[0]
+
+
 if __name__ == '__main__':
 
     # 获取个股代码
@@ -248,6 +274,8 @@ if __name__ == '__main__':
     zhang_ting_map = get_zhang_ting_map(ti_cai_list)
     print("zhang_ting_map:", zhang_ting_map)
 
+    count = 0
+    proxy_ip = ""
     for ti_cai, name_list in zhang_ting_map.items():
         print("ti_cai:", ti_cai)
         print("name_list:", name_list)
@@ -257,7 +285,11 @@ if __name__ == '__main__':
         # 爬取涨停数据
         info_map = {}
         for name in name_list:
-            article_info = get_article_info(name)
+            if count % 2 == 0:
+                proxy_ip = get_proxy_ip()
+            count = count + 1
+
+            article_info = get_article_info(name, proxy_ip)
             if article_info:
                 info_map[name] = article_info
 
