@@ -269,6 +269,7 @@ if __name__ == '__main__':
 
     # IP代理官网：https://www.qg.net/user/proxyipResource
     # githup token: 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
+    # git remote set-url origin https://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@github.com/rocky1543/replay.git
 
     # 获取个股代码
     get_code_map()
