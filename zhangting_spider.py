@@ -195,7 +195,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
             "二波：题材大小，决定龙头高度，题材能持续，龙头就能持续，不取决于龙头的高度",
 
             "二波：市场是第一大腿，板块是第二大腿，龙头是第三大腿，在市场不是很差的时候，"
-            "板块很强，有着绝对的，压倒性的优势，就可以拧着龙头强劲持续的往上走，反之就拧着龙头往下走",
+            "板块很强，就可以拧着龙头强劲持续的往上走，反之就拧着龙头往下走",
 
             "二波：一个再有能力的人，其价值都是平台赋予的，板块，大盘环境就是龙头的平台",
 
@@ -253,16 +253,21 @@ def get_code_map():
         code_map[row["名称"].strip()] = {"代码": row["代码"].strip(), "涨跌幅": row["涨跌幅"]}
 
 
-def get_proxy_ip():
-    # 青果网络的API地址和参数：https://www.qg.net/tools/IPdebug.html
-    api_url = "https://share.proxy.qg.net/get?key=03WMRTUF&num=1&distinct=true"
+def get_proxy_ip(proxy_ip):
+    try:
+        # 青果网络的API地址和参数：https://www.qg.net/tools/IPdebug.html
+        api_url = "https://share.proxy.qg.net/get?key=03WMRTUF&num=1&distinct=true"
 
-    response = requests.get(api_url)
-    data = json.loads(response.text)
-    data = data.get("data", [])
+        response = requests.get(api_url)
+        data = json.loads(response.text)
+        data = data.get("data", [])
 
-    server_list = [val.get("server") for val in data]
-    return server_list[0]
+        server_list = [val.get("server") for val in data]
+        if server_list and len(server_list) > 0:
+            return server_list[0]
+    except Exception as e:
+        logging.exception(e)
+    return proxy_ip
 
 
 if __name__ == '__main__':
@@ -287,7 +292,7 @@ if __name__ == '__main__':
         info_map = {}
         for name in name_list:
             if count % 2 == 0:
-                proxy_ip = get_proxy_ip()
+                proxy_ip = get_proxy_ip(proxy_ip)
             count = count + 1
 
             article_info = get_article_info(name, proxy_ip)
