@@ -267,7 +267,6 @@ def get_proxy_ip():
 
 if __name__ == '__main__':
 
-
     # 获取个股代码
     get_code_map()
 
