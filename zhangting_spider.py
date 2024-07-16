@@ -254,7 +254,7 @@ def get_code_map():
 
 
 def get_proxy_ip():
-    # 青果网络的API地址和参数
+    # 青果网络的API地址和参数：https://www.qg.net/tools/IPdebug.html
     api_url = "https://share.proxy.qg.net/get?key=03WMRTUF&num=1&distinct=true"
 
     response = requests.get(api_url)
