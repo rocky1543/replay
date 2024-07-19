@@ -2,7 +2,7 @@ import fnmatch
 import json
 import os
 from download_data import download_data
-from zhangting_spider import get_article_info, emotional_cycle_action, save_word_text
+from zhangting_spider import get_article_info, get_proxy_ip, save_word_text
 import akshare as ak
 import pandas as pd
 
@@ -164,8 +164,14 @@ def get_ge_gu_info(lian_ban_num):
 
     # 爬取涨停数据
     info_map = {}
+    count = 0
+    proxy_ip = ""
     for name in name_list:
-        article_info = get_article_info(name)
+        if count % 2 == 0:
+            proxy_ip = get_proxy_ip(proxy_ip)
+        count = count + 1
+
+        article_info = get_article_info(name, proxy_ip)
         if article_info:
             info_map[name] = article_info
 

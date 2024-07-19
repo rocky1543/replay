@@ -181,6 +181,7 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
         # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         yu_lu_list = [
+            "坚持无减肥，不要犯错，复利成长",
             "慢下来，不是风动，不是幡动，是心动",
             "驱动力：市场不认可的东西，都是垃圾",
             "看盘要找出每个大题材异动上涨的原因",
