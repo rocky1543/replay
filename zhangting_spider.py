@@ -135,7 +135,7 @@ def get_today():
     return now.strftime("%Y-%m-%d")
 
 
-def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_type="A5"):
+def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_type="A5"):
     # 创建文档
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
@@ -209,13 +209,13 @@ def save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, print_ty
             "亏钱永远比赚钱容易，因为市场不好的时候，亏得最惨的一般都是追高的，"
             "市场好的时候，涨起来的是因为新闻助推的，方向是随机，你不一定跟得上"
         ]
-
+        direction = "最近方向：" + "，".join(direction_list)
         zhu = ""
         if first_page:
             for i, yu_lu in enumerate(yu_lu_list):
                 zhu = zhu + "{}、{}\n".format(i + 10, yu_lu)
         # 添加段落
-        doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
+        doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n" + direction + "\n\n" + zhu)
         first_page = False
 
     # 保存文档
@@ -303,12 +303,10 @@ if __name__ == '__main__':
         if len(info_map) <= 0:
             continue
 
-        # 老龙高度，当前情绪周期节点，计划
-        lao_long_gao_du = 13
-        # 个股标签：1:最强龙头，2:缩量秒板跟风，3:放量换手跟风，4:放量弱板跟风，5:老周期中高位
-
         # 1:一致，2：分歧，3：退潮，4：混沌
         cycle_and_action = emotional_cycle_action.get(1)
 
+        # 最近方向
+        direction_list = ["车路云", "自动驾驶", "铜缆", "bcp", "半导体芯片"]
         # 保存到word
-        save_word_text(ti_cai, info_map, lao_long_gao_du, cycle_and_action, "A4")
+        save_word_text(ti_cai, info_map, direction_list, cycle_and_action, "A4")
