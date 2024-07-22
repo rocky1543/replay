@@ -25,11 +25,13 @@ def save_word_text():
     section.bottom_margin = Cm(1.27)
 
     fin = open("./keyword_text")
-    for i, line in enumerate(fin.readlines()):
+    count = 1
+    for line in fin.readlines():
         line = line.strip()
         if not line:
             continue
-
+        if line.count("**") <= 0:
+            continue
         line = line.replace("**", "")
         print("line:", line)
         line = line.split(".", 1)[1]
@@ -45,7 +47,7 @@ def save_word_text():
         p = doc.add_paragraph()
 
         # 段落中的关键字
-        run = p.add_run("{}. {}：".format(i + 1, keyword))
+        run = p.add_run("{}. {}：".format(count, keyword))
         run.bold = True
         # 字体倾斜：
         # run.italic = True
@@ -58,9 +60,10 @@ def save_word_text():
 
         # 段落中的关键字解释
         p.add_run(line_data[1])
+        count = count + 1
 
-        # 保存文档
-        doc.save('关键字.docx')
+    # 保存文档
+    doc.save('关键字.docx')
 
 
 if __name__ == '__main__':
