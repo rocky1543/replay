@@ -182,9 +182,12 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
         # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         yu_lu_list = [
             "驱动力：市场不认可的东西，都是垃圾",
+            "杂毛垃圾会让你操作变形，跟酱油换命不值得",
             "小行情，行情差，错过买点时的大胆，导致大行情变得唯唯诺诺",
             "慢下来，坚持无减肥，不要犯错，复利成长，不是风动，不是幡动，是心动",
-            "市场没有量，其实就是玩的人少了，为什么你不挣钱：因为好的机会很少，你却出手很多，跟酱油换命不值得",
+            "市场没有量，其实就是玩的人少了，为什么你不挣钱：因为好的机会很少，你却出手很多",
+            "大哥和小弟的强度差：大哥明天有硬板的预期，小弟才会有套利预期，"
+            "也就是大哥明天板非常硬，小弟也能板，大哥板一般，小弟能涨五六个点，大哥明天歇菜，小弟直接死",
 
             "复盘：自上而下：1、大题材:大新强 -> 持续性 -> 龙头；2、二波预期；"
             "看盘：要找出每个大题材异动上涨的原因",
@@ -215,7 +218,7 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
             for i, yu_lu in enumerate(yu_lu_list):
                 zhu = zhu + "{}、{}\n".format(i + 10, yu_lu)
         # 添加段落
-        doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n" + direction + "\n\n" + zhu)
+        doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n\n" + zhu)
         first_page = False
 
     # 保存文档
