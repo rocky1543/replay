@@ -181,7 +181,7 @@ def get_ge_gu_info(lian_ban_num):
         save_into_text(info_map)
 
     # 保存到word
-    save_word_text("连板", info_map, 7, {}, "A4")
+    save_word_text("连板", info_map, [], {}, "A4")
 
     print("name_list:", name_list)
 
