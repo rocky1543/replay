@@ -208,7 +208,8 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
             "光靠勤奋和努力是远远不够的，真正重要的是顺势而为",
 
             "亏钱永远比赚钱容易，因为市场不好的时候，亏得最惨的一般都是追高的，"
-            "市场好的时候，方向是随机，你不一定跟得上"
+            "市场好的时候，方向是随机，你不一定跟得上",
+            "做作业的时候，不会的题就不要做了，因为做了你也做不对，把自己会的题做对了，分也不低"
         ]
         direction = "最近方向：" + "，".join(direction_list)
         zhu = ""
