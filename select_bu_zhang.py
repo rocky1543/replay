@@ -9,8 +9,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 
 
-def load_data(sz_high_price_day):
-    file_list = get_files_in_directory(sz_high_price_day)
+def load_data():
+    file_list = get_files_in_directory()
 
     all_date_data = {}
     for file in file_list:
@@ -38,7 +38,7 @@ def load_data(sz_high_price_day):
     return all_date_data
 
 
-def get_files_in_directory(sz_high_price_day):
+def get_files_in_directory(sz_high_price_day=[]):
     # 获取目录下的所有文件和子目录
     all_items = os.listdir("./close_data")
 
@@ -75,7 +75,7 @@ def get_files_in_directory(sz_high_price_day):
 
 
 def select_lian_xu_zhang_ting(lian_ban_num):
-    all_date_data = load_data([])
+    all_date_data = load_data()
     select_code_list = []
     for code, data in all_date_data.items():
         if len(data) < 5:
