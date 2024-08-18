@@ -3,22 +3,35 @@ from datetime import datetime, timedelta
 from download_data import download_data
 from select_bu_zhang import get_files_in_directory
 import pandas as pd
+import akshare as ak
 
-if __name__ == '__main__':
-    # 下载数据
+code_map = {}
+all_date_data = {}
+
+
+def get_code_map():
+    # 获取东方财富网-沪深京 A 股-实时行情
+    df = ak.stock_zh_a_spot_em()
+    for index, row in df.iterrows():
+        code_map[row["名称"].strip()] = {"代码": row["代码"].strip(), "涨跌幅": row["涨跌幅"]}
+
+
+def download():
     start_day = (datetime.now() - timedelta(days=30)).strftime('%Y%m%d')
     end_day = datetime.now().strftime('%Y%m%d')
     print("start_day:", start_day)
     print("end_day:", end_day)
     download_data(start_day, end_day)
 
+    get_code_map()
+
+
+def get_all_date_data():
     file_list = get_files_in_directory()
-
-    file_list = file_list[0:7]
-
+    file_list = file_list[0:5]
+    file_list.sort()
     print("file_list:", file_list)
 
-    all_date_data = {}
     for file in file_list:
         print("load_file:", file)
 
@@ -33,24 +46,34 @@ if __name__ == '__main__':
 
             each_date_data[trade_date] = {
                 ts_code: ts_code,
-                "open": row["open"],
-                "high": row["high"],
-                "low": row["low"],
-                "close": row["close"],
-                "pct_chg": row["pct_chg"],
                 "amount": "{}亿".format(round(row["amount"] / 100000.0, 2))
-
             }
             all_date_data[ts_code] = each_date_data
 
-    data = all_date_data.get("600686")
+
+def get_amount_info(name):
+    code_info = code_map.get(name)
+    code = code_info.get("代码")
+    print("code:", code)
+
+    data = all_date_data.get(code)
     amount = ""
     for k, v in data.items():
-        print("k:", k)
-        print("v:", v)
         if not amount:
             amount = v.get("amount")
         else:
             amount = "{},{}".format(amount, v.get("amount"))
-    print("600639:", 600639)
-    print("amount:", amount)
+    return amount
+
+
+if __name__ == '__main__':
+    # 获取数据
+    download()
+
+    # 获取数据详情
+    get_all_date_data()
+
+    name = "金龙汽车"
+    amount_info = get_amount_info(name)
+
+    print("{}:{}".format(name, amount_info))
