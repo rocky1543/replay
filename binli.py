@@ -54,7 +54,6 @@ def get_all_date_data():
 def get_amount_info(name):
     code_info = code_map.get(name)
     code = code_info.get("代码")
-    print("code:", code)
 
     data = all_date_data.get(code)
     amount = ""
@@ -66,6 +65,23 @@ def get_amount_info(name):
     return amount
 
 
+def get_zhang_ting_list():
+    name_list = []
+    name_list_sub = []
+    for line in open("./input/涨停.txt"):
+        if line.strip():
+            data = line.strip().split(",")
+            name_list_sub.append(data[0])
+        else:
+            if len(name_list_sub) > 0:
+                name_list.append(name_list_sub)
+                name_list_sub = []
+
+    if len(name_list_sub) > 0:
+        name_list.append(name_list_sub)
+    return name_list
+
+
 if __name__ == '__main__':
     # 获取数据
     download()
@@ -73,7 +89,11 @@ if __name__ == '__main__':
     # 获取数据详情
     get_all_date_data()
 
-    name = "金龙汽车"
-    amount_info = get_amount_info(name)
+    name_list = get_zhang_ting_list()
+    print("name_list:", name_list)
 
-    print("{}:{}".format(name, amount_info))
+    for name_list_sub in name_list:
+        for name in name_list_sub:
+            amount_info = get_amount_info(name)
+            print("{}:{}".format(name, amount_info))
+        print()
