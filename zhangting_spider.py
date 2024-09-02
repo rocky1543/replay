@@ -297,9 +297,11 @@ if __name__ == '__main__':
         # 爬取涨停数据
         info_map = {}
         for name in name_list:
-            if count % 2 == 0:
-                proxy_ip = get_proxy_ip(proxy_ip)
-            count = count + 1
+            # if count % 2 == 0:
+            #     proxy_ip = get_proxy_ip(proxy_ip)
+            # count = count + 1
+
+            proxy_ip = get_proxy_ip(proxy_ip)
 
             article_info = get_article_info(name, proxy_ip)
             if article_info:
