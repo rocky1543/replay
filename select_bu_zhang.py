@@ -119,6 +119,7 @@ def select_lian_xu_zhang_ting(lian_ban_num):
         name = code_info.get("名称", "")
         if name.count("ST") > 0:
             continue
+        name = name.replace(" ", "")
         name_list.append(name)
         name_code_map[name] = code
         result_code_list.append(code)
