@@ -182,7 +182,6 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
         # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         yu_lu_list = [
-            "从大盘和板块找确定性：上涨考虑风险，下跌考虑机会",
             "看盘：先大后小，自上而下，方向在哪里，谁是核心",
             "小行情，行情差，错过买点时的大胆，导致大行情变得唯唯诺诺",
 
