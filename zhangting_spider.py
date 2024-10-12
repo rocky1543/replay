@@ -182,9 +182,7 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
         # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
         # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         yu_lu_list = [
-            "人性之上，规律之下",
-            "看盘：先大后小，自上而下，方向在哪里，谁是核心",
-
+            "人性之上，规律之下，看盘：先大后小，自上而下，方向在哪里，谁是核心",
             "小行情，行情差，错过买点时的大胆，导致大行情变得唯唯诺诺",
             "看到的强才是真的强，看不到强只能等，大部分的预判都是错的，都是胡思乱想",
 
