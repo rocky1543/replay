@@ -60,7 +60,7 @@ def get_files_in_directory(sz_high_price_day=[]):
     print("all_files:", files)
     print("all_files_len:", len(files))
 
-    select_file = files[:15]
+    select_file = files[:5]
 
     for file in sz_high_price_day_file:
         if file not in select_file:
