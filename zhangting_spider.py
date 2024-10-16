@@ -221,6 +221,8 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
 
             "开始分歧了，后排股都要卖，在后排都死得差不多的时候，最强的龙头筹码才会松动，"
             "就像作战，各个部队的战士都挡不住了，都死光了，司令部才会沦陷，然后朝代灭亡",
+            "挣也好，亏也好，卖得好也好，卖不好也好，爱咋滴咋滴，机会是等出来的，"
+            "既然大部分的时间都是等待，那还想那么多做什么呢，想多了浪费脑子"
         ]
         direction = "最近方向：" + "，".join(direction_list)
         zhu = ""
