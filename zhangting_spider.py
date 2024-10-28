@@ -62,7 +62,7 @@ def get_article_info(name, proxy_ip):
         try:
             jiucai_url = 'https://www.jiuyangongshe.com/search/new?k={}&type=5'.format(name)
             print("jiucai_url:", jiucai_url)
-            response = requests.get(jiucai_url, headers=headers, proxies=proxies)
+            response = requests.get(jiucai_url, headers=headers, proxies=proxies, timeout=3)
             if response.status_code == 200 and response.text.count("股票异动解析") > 0:
                 text = response.text
             time.sleep(0.5)
@@ -84,7 +84,7 @@ def get_article_info(name, proxy_ip):
             try:
                 href_full_url = "https://www.jiuyangongshe.com{}".format(href)
                 print("href_full_url:", href_full_url)
-                response = requests.get(href_full_url, headers=headers, proxies=proxies)
+                response = requests.get(href_full_url, headers=headers, proxies=proxies, timeout=3)
                 text = ""
                 if response.status_code == 200:
                     text = response.text
@@ -113,6 +113,7 @@ def get_article_info(name, proxy_ip):
                 info = str(info).replace("<div class=\"pre-line\" data-v-421de0aa=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-0aa83f20=\"\">", "")
                 info = str(info).replace("<div class=\"pre-line\" data-v-28f26548=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-1e17e0f0=\"\">", "")
                 info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
