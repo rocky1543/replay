@@ -38,7 +38,11 @@ emotional_cycle_action = {
 }
 
 
-def get_proxies(proxy_ip):
+def get_proxies():
+    proxy_ip = get_proxy_ip()
+    if proxy_ip == "":
+        proxy_ip = get_proxy_ip()
+
     # 官网：https://www.qg.net/doc/1697.html
     authKey = "03WMRTUF"
     password = "9D76ED4CAB2E"
@@ -49,10 +53,10 @@ def get_proxies(proxy_ip):
     }
 
 
-def get_article_info(name, proxy_ip):
+def get_article_info(name):
     print("------------------------------")
     name = name.replace("Ａ", "A")
-    proxies = get_proxies(proxy_ip)
+    proxies = get_proxies()
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
     }
@@ -68,6 +72,7 @@ def get_article_info(name, proxy_ip):
             time.sleep(0.5)
             # print("text:", text)
         except Exception as e:
+            proxies = get_proxies()
             logging.error(e)
         if text:
             break
@@ -129,6 +134,7 @@ def get_article_info(name, proxy_ip):
                 print("info:", info)
                 return {"info": info, "date": date, "title": title, "ti_cai_text": ti_cai_text}
             except Exception as e:
+                proxies = get_proxies()
                 logging.exception(e)
 
 
@@ -221,7 +227,8 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
             "就像作战，各个部队的战士都挡不住了，都死光了，司令部才会沦陷，然后朝代灭亡，天崩地裂",
             "挣也好，亏也好，卖得好也好，卖得不好也好，爱咋滴咋滴，机会是等出来的，"
             "想那么多做什么，想多了浪费脑子",
-            "条件成立你才会去买，那就需要分析哪些是主要条件，哪些是次要条件"
+            "条件成立你才会去买，那就需要分析哪些是主要条件，哪些是次要条件",
+            "去弱留强：龙头分歧给机会，仓位立马从小弟切到龙头里，所以龙头走弱是小弟死掉的主要原因"
         ]
         direction = "最近方向：" + "，".join(direction_list)
         zhu = ""
@@ -267,7 +274,7 @@ def get_code_map():
         code_map[row["名称"].strip()] = {"代码": row["代码"].strip(), "涨跌幅": row["涨跌幅"]}
 
 
-def get_proxy_ip(proxy_ip):
+def get_proxy_ip():
     try:
         # 青果网络的API地址和参数：https://www.qg.net/tools/IPdebug.html
         api_url = "https://share.proxy.qg.net/get?key=03WMRTUF&num=1&distinct=true"
@@ -281,7 +288,7 @@ def get_proxy_ip(proxy_ip):
             return server_list[0]
     except Exception as e:
         logging.exception(e)
-    return proxy_ip
+    return ""
 
 
 if __name__ == '__main__':
@@ -295,7 +302,6 @@ if __name__ == '__main__':
     print("zhang_ting_map:", zhang_ting_map)
 
     count = 0
-    proxy_ip = ""
     for ti_cai, name_list in zhang_ting_map.items():
         print("ti_cai:", ti_cai)
         print("name_list:", name_list)
@@ -305,13 +311,7 @@ if __name__ == '__main__':
         # 爬取涨停数据
         info_map = {}
         for name in name_list:
-            # if count % 2 == 0:
-            #     proxy_ip = get_proxy_ip(proxy_ip)
-            # count = count + 1
-
-            proxy_ip = get_proxy_ip(proxy_ip)
-
-            article_info = get_article_info(name, proxy_ip)
+            article_info = get_article_info(name)
             if article_info:
                 info_map[name] = article_info
 
