@@ -93,11 +93,7 @@ def get_article_info(name):
                 except Exception as e:
                     logging.exception(e)
 
-                info = str(info).replace("<div class=\"pre-line\" data-v-855c39ec=\"\">", "")
-                info = str(info).replace("<div class=\"pre-line\" data-v-421de0aa=\"\">", "")
-                info = str(info).replace("<div class=\"pre-line\" data-v-0aa83f20=\"\">", "")
-                info = str(info).replace("<div class=\"pre-line\" data-v-28f26548=\"\">", "")
-                info = str(info).replace("<div class=\"pre-line\" data-v-1e17e0f0=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-aa5f53ac=\"\">", "")
                 info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
@@ -205,7 +201,7 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
             "想那么多做什么，想多了浪费脑子",
             "条件成立你才会去买，那就需要分析哪些是主要条件，哪些是次要条件",
             "去弱留强：龙头分歧给机会，羊群仓位立马从小弟切到龙头里，龙头走弱是小弟死掉的主要原因",
-            "这几年一路走来的艰难困苦，冷暖自知，有什么值得歌颂的呢"
+            "这几年一路走来的艰难困苦，有什么值得歌颂的呢"
         ]
         zhu = ""
         if first_page:
