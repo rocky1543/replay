@@ -15,27 +15,6 @@ from pyquery import PyQuery as pq
 
 code_map = {}
 zhang_ting_di_wei_tag = {}
-emotional_cycle_action = {
-    1: {
-        "cycle": "龙头主升一致期",
-        "action": "做龙头属性补涨",
-        "profit_space": "新龙当前高度和老龙的高度差"
-    },
-    2: {
-        "cycle": "龙头pk或市场分歧期",
-        "action": "做龙头or做龙头属性补涨",
-        "profit_space": "新龙当前高度和老龙的高度差"
-    },
-    3: {
-        "cycle": "龙头断板退潮期",
-        "action": "逃离高位，做龙头属性补涨or新题材低位补涨龙",
-        "profit_space": "2、3板和老龙的高度差"
-    },
-    4: {
-        "cycle": "龙头无高度混沌期",
-        "action": "老龙头无高度，高度被压制，没有赚钱效应，最好空仓"
-    },
-}
 
 
 def get_proxies():
@@ -143,7 +122,7 @@ def get_today():
     return now.strftime("%Y-%m-%d")
 
 
-def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_type="A5"):
+def save_word_text(ti_cai, info_map, print_type="A5"):
     # 创建文档
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
@@ -185,9 +164,6 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
         h1 = doc.add_heading(key, level=2)
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        # zhu1 = "节点: {}， 老龙高度: {}板".format(cycle_and_action.get("cycle"), lao_long_gao_du)
-        # zhu2 = "空间: {}".format(cycle_and_action.get("profit_space"))
-        # zhu3 = "计划: {}".format(cycle_and_action.get("action"))
         yu_lu_list = [
             "张良：给你的，你不能全要，不给你的，你不能要",
             "处事：人性之上，规律之下，看盘：先大后小，自上而下，方向在哪里，谁是核心",
@@ -228,9 +204,9 @@ def save_word_text(ti_cai, info_map, direction_list, cycle_and_action, print_typ
             "挣也好，亏也好，卖得好也好，卖得不好也好，爱咋滴咋滴，机会是等出来的，"
             "想那么多做什么，想多了浪费脑子",
             "条件成立你才会去买，那就需要分析哪些是主要条件，哪些是次要条件",
-            "去弱留强：龙头分歧给机会，羊群仓位立马从小弟切到龙头里，所以龙头走弱是小弟死掉的主要原因"
+            "去弱留强：龙头分歧给机会，羊群仓位立马从小弟切到龙头里，龙头走弱是小弟死掉的主要原因",
+            "这几年一路走来的艰难困苦，冷暖自知，有什么值得歌颂的呢"
         ]
-        direction = "最近方向：" + "，".join(direction_list)
         zhu = ""
         if first_page:
             for i, yu_lu in enumerate(yu_lu_list):
@@ -319,10 +295,5 @@ if __name__ == '__main__':
         if len(info_map) <= 0:
             continue
 
-        # 1:一致，2：分歧，3：退潮，4：混沌
-        cycle_and_action = emotional_cycle_action.get(1)
-
-        # 最近方向
-        direction_list = ["车路云", "自动驾驶", "铜缆", "bcp", "半导体芯片"]
         # 保存到word
-        save_word_text(ti_cai, info_map, direction_list, cycle_and_action, "A4")
+        save_word_text(ti_cai, info_map, "A4")
