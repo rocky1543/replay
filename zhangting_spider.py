@@ -94,7 +94,7 @@ def get_article_info(name):
                     logging.exception(e)
 
                 info = str(info).replace("<div class=\"pre-line\" data-v-aa5f53ac=\"\">", "")
-                info = info.replace("</div>", "")
+                info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93c=\"\">", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
                 if code_info:
