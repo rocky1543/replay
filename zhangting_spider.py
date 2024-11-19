@@ -96,6 +96,7 @@ def get_article_info(name):
                 info = str(info).replace("<div class=\"pre-line\" data-v-aa5f53ac=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93c=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
+                info = info.replace("<div class=\"pre-line\" data-v-e8c25eb2=\"\">", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
                 if code_info:
@@ -166,7 +167,7 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
             "处事：人性之上，规律之下，看盘：先大后小，自上而下，在哪里打仗，能不能赢，明天有没有更多的人来接盘",
             "亏钱永远比赚钱容易，躲过下雨天，已经成功了一半，少私寡欲，才能无穷无尽",
             "你关注的主要矛盾一定是在核心个股上，其他都是次要矛盾，都应该忽略掉，小行情，行情差，错过买点时的大胆，是你亏钱的根源",
-            "战略思维: 我如果是神，明天我拉哪个板块，哪个个股，能得到市场认同，形成合力，能盘活整个市场",
+
             "决定你要不要买，个股，图形是次要矛盾，往上梳理，时间节点，大盘环境，题材人气，小弟强度才是主要矛盾，"
             "成功率来源于更高的要求，而不是饥不择食",
 
@@ -216,6 +217,7 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
         first_page = False
 
     # 保存文档
+    doc.add_paragraph("Q: 我如果是神，明天我拉哪个板块，哪个个股，能得到市场认同，形成合力，能盘活整个市场")
     doc.save('result/{}.docx'.format(ti_cai))
 
 
