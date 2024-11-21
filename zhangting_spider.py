@@ -97,6 +97,7 @@ def get_article_info(name):
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93c=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-e8c25eb2=\"\">", "")
+                info = info.replace("</div>", "")
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
                 if code_info:
@@ -217,7 +218,24 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
         first_page = False
 
     # 保存文档
-    doc.add_paragraph("Q: 我如果是神，明天我拉哪个板块，哪个个股，能得到市场认同，形成合力，能盘活整个市场")
+    doc.add_paragraph("Q: 我如果是神，明天我拉哪个板块，哪个个股，能得到市场认同，形成合力，能盘活整个市场\n")
+    bj = """ 
+    怎么比较？
+    一、时间节点：
+        1、涨潮：一鼓作气，再而衰，三而竭，便是顶
+        2、退潮：一鼓作气，再而衰，三而竭，便是底
+        3、规律：祸兮福所倚，福兮祸所伏
+    二、题材板块：
+        1、题材大小
+        2、所处阶段
+        3、资金进攻力度
+    三、龙头：
+        1、股性：量价关系
+        2、人气：群众基础
+        3、资金：进攻力度
+    四、主要矛盾是大盘环境，时间节点，题材板块，次要矛盾是龙头个股，不符合主要矛盾，一律不考虑
+    """
+    doc.add_paragraph(bj)
     doc.save('result/{}.docx'.format(ti_cai))
 
 
