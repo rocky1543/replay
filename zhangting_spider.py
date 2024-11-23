@@ -121,7 +121,7 @@ def get_today():
     return now.strftime("%Y-%m-%d")
 
 
-def save_word_text(ti_cai, info_map, print_type="A5"):
+def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     # 创建文档
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
@@ -152,8 +152,10 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
     doc.add_paragraph("- " * 90)
 
     add_page_break = False
+    add_he_xin_split = True
     first_page = True
-    for key, val in info_map.items():
+    for key in name_list:
+        val = info_map.get(key)
         if print_type == "A5":
             # 分页符
             if not add_page_break:
@@ -166,6 +168,10 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
         info = val.get("info")
         title = val.get("title")
         ti_cai_text = val.get("ti_cai_text")
+
+        if key not in he_xin and add_he_xin_split:
+            add_he_xin_split = False
+            doc.add_paragraph("- " * 90)
 
         # 添加标题，0表示样式为title
         h1 = doc.add_heading(key, level=2)
@@ -235,7 +241,7 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
     一、时间节点：
         1、涨潮：一鼓作气，再而衰，三而竭，便是阶段性顶，放弃所有机会
         2、退潮：一鼓作气，再而衰，三而竭，便是阶段性底，考虑主线的核心，其他全部放弃
-        3、规律：随着时间的变化，买卖强弱关系是相互转化的，即阴阳循环，祸兮福所倚，福兮祸所伏
+        3、规律：随着时间的变化，买卖强弱关系是会相互转化的，即阴阳循环，祸兮福所倚，福兮祸所伏
         
     二、题材板块：
         1、题材大小
@@ -257,7 +263,7 @@ def save_word_text(ti_cai, info_map, print_type="A5"):
                 "全部放弃"
     """
     doc.add_paragraph(bj)
-    doc.save('result/{}.docx'.format(ti_cai))
+    doc.save('result/复盘.docx')
 
 
 def mo_shi():
@@ -334,33 +340,41 @@ def get_proxy_ip():
     return ""
 
 
+def get_name_list(file, filter_list):
+    name_list = []
+    for line in open(file):
+        line = line.strip()
+        if line.strip() and line not in filter_list:
+            name_list.append(line)
+    return name_list
+
+
+def get_replay_name_list():
+    he_xin = get_name_list("./input/核心个股.txt", [])
+    zhang_ting = get_name_list("./input/涨停.txt", he_xin)
+    print("he_xin:", he_xin)
+    print("zhang_ting:", zhang_ting)
+
+    return he_xin, he_xin + zhang_ting
+
+
 if __name__ == '__main__':
 
     # 获取个股代码
     get_code_map()
 
     # 获取题材涨停的个股
-    ti_cai_list = ["涨停"]
-    zhang_ting_map = get_zhang_ting_map(ti_cai_list)
-    print("zhang_ting_map:", zhang_ting_map)
+    he_xin, name_list = get_replay_name_list()
+    print("name_list:", name_list)
 
-    count = 0
-    for ti_cai, name_list in zhang_ting_map.items():
-        print("ti_cai:", ti_cai)
-        print("name_list:", name_list)
-        if len(name_list) <= 0:
-            continue
+    # 爬取涨停数据
+    info_map = {}
+    for name in name_list:
+        article_info = get_article_info(name)
+        if article_info:
+            info_map[name] = article_info
 
-        # 爬取涨停数据
-        info_map = {}
-        for name in name_list:
-            article_info = get_article_info(name)
-            if article_info:
-                info_map[name] = article_info
-
-        print("info_map:", info_map)
-        if len(info_map) <= 0:
-            continue
-
+    print("info_map:", info_map)
+    if len(info_map) > 0:
         # 保存到word
-        save_word_text(ti_cai, info_map, "A4")
+        save_word_text(he_xin, name_list, info_map, "A4")
