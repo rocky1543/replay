@@ -145,8 +145,8 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
 
     h1 = doc.add_heading("时间节点", level=2)
     h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    time_point = "1、涨潮：买盘一鼓作气， 再而衰， 三而竭， 便是阶段性顶\n" \
-                 "2、退潮：卖盘一鼓作气， 再而衰， 三而竭， 便是阶段性底"
+    time_point = "1、涨潮：买盘一鼓作气， 再而衰， 三而竭， 阶段性顶\n" \
+                 "2、退潮：卖盘一鼓作气， 再而衰， 三而竭， 阶段性底"
 
     doc.add_paragraph(time_point)
     doc.add_paragraph("- " * 90)
@@ -242,8 +242,8 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     
     怎么比较？
     一、时间节点：
-        1、涨潮：一鼓作气，再而衰，三而竭，便是阶段性顶，放弃所有机会
-        2、退潮：一鼓作气，再而衰，三而竭，便是阶段性底，考虑主线的核心，其他全部放弃
+        1、涨潮：一鼓作气，再而衰，三而竭，阶段性顶，放弃所有机会
+        2、退潮：一鼓作气，再而衰，三而竭，阶段性底，考虑主线的核心，其他全部放弃
         3、规律：随着时间的变化，买卖强弱关系是会相互转化的，即阴阳循环，祸兮福所倚，福兮祸所伏
         
     二、题材板块：
