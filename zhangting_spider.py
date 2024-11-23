@@ -151,6 +151,8 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     doc.add_paragraph(time_point)
     doc.add_paragraph("- " * 90)
 
+    # 题材
+
     add_page_break = False
     add_he_xin_split = True
     first_page = True
@@ -264,32 +266,6 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     """
     doc.add_paragraph(bj)
     doc.save('result/复盘.docx')
-
-
-def mo_shi():
-    """
-    主要矛盾：比较的三大方向，也就是每天复盘需要考虑的三大方向
-        1、时间节点
-        2、题材方向
-        3、核心强势个股
-    次要矛盾：
-        1、其他涨停个股，只是未了更好的了解市场
-
-    随着时间的变化，买卖强弱关系是可以相互转化的，就像阴阳图一样，往复循环，生生不息
-        1、买盘一鼓作气，再而衰，三而竭，便是顶，此时卖盘最强(敌人)
-        2、卖盘一鼓作气，再而衰，三而竭，便是底，此时买盘最强(战友)
-    当卖盘强的时间节点(阶段性顶部)，放弃所有机会
-    当买盘强的时间节点(阶段性底部)，考虑主要方向的主要个股，放弃所有的次要方向，以及所有的主要方向的次要个股
-
-    :return:
-    """
-    if "时间节点" == "卖盘强势":
-        "全部放弃"
-    else:
-        if "方向" == "主线题材" and "个股" == "核心龙头":
-            "可以考虑"
-        else:
-            "全部放弃"
 
 
 def get_timestamp(date):
