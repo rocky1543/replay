@@ -330,7 +330,7 @@ def get_name_list(file, filter_list):
 
 
 def get_replay_name_list():
-    he_xin = get_name_list("./input/核心个股.txt", [])
+    he_xin = get_name_list("input/复盘核心.txt", [])
     zhang_ting = get_name_list("./input/涨停.txt", he_xin)
     print("he_xin:", he_xin)
     print("zhang_ting:", zhang_ting)
