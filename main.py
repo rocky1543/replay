@@ -98,5 +98,23 @@ def test5():
     print(result)
 
 
+def test6():
+    lian_ban_map = {}
+    for line in open("./input/连板天梯.txt"):
+        data = line.split("\t")
+        # print("data:", data)
+        name = data[0].strip()
+        ban_num = data[-1].strip()
+
+        lian_ban_list = lian_ban_map.get(ban_num, [])
+        lian_ban_list.append(name)
+        lian_ban_map[ban_num] = lian_ban_list
+
+    lian_ban_data = []
+    for key, val in lian_ban_map.items():
+        lian_ban_data.append("{}板: {}".format(key, ",".join(val)))
+    print("lian_ban_data:", lian_ban_data)
+
+
 if __name__ == '__main__':
-    test5()
+    test6()
