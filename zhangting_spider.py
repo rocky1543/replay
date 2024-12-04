@@ -41,7 +41,7 @@ def get_article_info(name):
     }
     print("proxies:", proxies)
     text = ""
-    for _ in range(20):
+    for _ in range(10):
         try:
             jiucai_url = 'https://www.jiuyangongshe.com/search/new?k={}&type=5'.format(name)
             print("jiucai_url:", jiucai_url)
@@ -64,7 +64,7 @@ def get_article_info(name):
 
     # 输出匹配到的href
     for href in href_matches:
-        for _ in range(2):
+        for _ in range(10):
             try:
                 href_full_url = "https://www.jiuyangongshe.com{}".format(href)
                 print("href_full_url:", href_full_url)
