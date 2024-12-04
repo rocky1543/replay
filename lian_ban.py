@@ -53,7 +53,7 @@ def get_lian_ban_data():
         data = line.split("\t")
         name = data[0].strip()
         ban_num = data[-1].strip()
-        fo.write(name+"\n")
+        fo.write(name + "," + ban_num + "板\n")
 
         lian_ban_list = lian_ban_map.get(ban_num, [])
         lian_ban_list.append(name)

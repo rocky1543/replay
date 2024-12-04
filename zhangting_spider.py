@@ -324,8 +324,15 @@ def get_name_list(file, filter_list):
     name_list = []
     for line in open(file):
         line = line.strip()
-        if line.strip() and line not in filter_list:
-            name_list.append(line)
+        data = line.strip().split(",")
+        name = data[0].strip()
+        tag = data[1].strip()
+        if len(data) == 2 and name and tag:
+            zhang_ting_di_wei_tag[name] = tag
+
+        if name and name not in filter_list:
+            name_list.append(name)
+
     return name_list
 
 
