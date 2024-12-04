@@ -157,7 +157,10 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     add_he_xin_split = True
     first_page = True
     for key in name_list:
-        val = info_map.get(key)
+        val = info_map.get(key, None)
+        if not val or val is None:
+            continue
+
         if print_type == "A5":
             # 分页符
             if not add_page_break:
