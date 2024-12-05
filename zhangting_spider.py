@@ -93,7 +93,7 @@ def get_article_info(name):
                 except Exception as e:
                     logging.exception(e)
 
-                info = str(info).replace("<div class=\"pre-line\" data-v-aa5f53ac=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-1fbcd229=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93c=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-e8c25eb2=\"\">", "")
@@ -235,13 +235,10 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     # 保存文档
     doc.add_paragraph("Q: 我如果是神，明天我拉哪个板块，哪个个股，能得到市场认同，形成合力，能盘活整个市场")
     bj = """ 
-    主要矛盾：三大范围：时间节点、题材方向、核心个股，也就是每天复盘只需要考虑三大范围即可
-    次要矛盾：其他涨停个股，只是为了更好的了解市场，不是主要矛盾的，机会一律放弃
-    
-    怎么比较？
+    主要矛盾：三大范围：时间节点、题材方向、核心个股
     一、时间节点：
-        1、涨潮：一鼓作气，再而衰，三而竭，阶段性顶，放弃所有机会
-        2、退潮：一鼓作气，再而衰，三而竭，阶段性底，考虑主线的核心，其他全部放弃
+        1、涨潮：一鼓作气，再而衰，三而竭
+        2、退潮：一鼓作气，再而衰，三而竭
         3、规律：随着时间的变化，买卖强弱关系是会相互转化的，即阴阳循环，祸兮福所倚，福兮祸所伏
         
     二、题材板块：
