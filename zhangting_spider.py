@@ -146,7 +146,8 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     h1 = doc.add_heading("时间节点", level=2)
     h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
     time_point = "1、涨潮：买盘一鼓作气， 再而衰， 三而竭， 阶段性顶\n" \
-                 "2、退潮：卖盘一鼓作气， 再而衰， 三而竭， 阶段性底"
+                 "2、退潮：卖盘一鼓作气， 再而衰， 三而竭， 阶段性底\n" \
+                 "3、今天比昨天：强，弱"
 
     doc.add_paragraph(time_point)
     doc.add_paragraph("- " * 90)
