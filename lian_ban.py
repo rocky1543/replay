@@ -33,6 +33,10 @@ def save_word_text(lian_ban_data, print_type="A5"):
     # 添加标题，0表示样式为title
     h1 = doc.add_heading("连板天梯", level=2)
     h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    doc.add_paragraph("物壮则老：\n"
+                      "1、连板天梯在壮大：当天最高板情绪比昨天强，大单强硬顶住，今天的机会就可以做\n"
+                      "2、连板天梯在崩塌：当天最高板分歧，漏单，断板，大单顶不住了，今天的机会都是别人的\n"
+                      "3、目的：观察主流板块中各个小周期情绪的起起伏伏，强弱转换，情绪转强的时候你进，高潮的时候就出")
     for line in lian_ban_data:
         line = line.replace("\t", ":\n")
         line = line.replace("&", "\n")
