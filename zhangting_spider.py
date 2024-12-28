@@ -143,8 +143,14 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     section.top_margin = Cm(1.27)
     section.bottom_margin = Cm(1.27)
 
-    h1 = doc.add_heading("复盘目标：寻找主流中各个小周期领涨股", level=2)
+    h1 = doc.add_heading("复盘", level=2)
     h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    fu_ban = "复盘三步曲：\n" \
+             "1、分析主流板块: 大的主流在哪里，主流没走完，就只能在这个主流里面选股\n" \
+             "2、分析时机：通过观察连板天梯的强弱转换，分析情绪强弱变化\n" \
+             "3、分析它领涨的个股：寻找主流中各个小周期领涨股\n"
+    doc.add_paragraph(fu_ban)
+    doc.add_paragraph("- " * 90)
 
     # 题材
     add_page_break = False
@@ -224,8 +230,8 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
             "一波高潮至大杀之后，为什么老东西就不行了，因为个股中会有很多获利、埋伏、套牢盘，筹码很复杂，"
             "筹码已经坏掉了，小弟没力气了，板块没力气了，大哥也走得不流畅了",
 
-            "-------------------------------------------------------------------------------"
-            "-------------------------------------------------------------------",
+            "",
+            "其他：",
             "老师所有的操作都在告诉你，要买就买那个最独一无二的，最强的，宁可不做也要缩小范围，减少目标",
             "市场不认可的东西都是垃圾，如果从个股看不出确定性，多看看板块，确定性就有了",
 
