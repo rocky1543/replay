@@ -143,17 +143,10 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     section.top_margin = Cm(1.27)
     section.bottom_margin = Cm(1.27)
 
-    h1 = doc.add_heading("时间节点", level=2)
+    h1 = doc.add_heading("复盘目标：寻找主流中各个小周期领涨股", level=2)
     h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    time_point = "1、涨潮：买盘一鼓作气， 再而衰， 三而竭， 阶段性顶\n" \
-                 "2、退潮：卖盘一鼓作气， 再而衰， 三而竭， 阶段性底\n" \
-                 "3、今天比昨天：强，弱"
-
-    doc.add_paragraph(time_point)
-    doc.add_paragraph("- " * 90)
 
     # 题材
-
     add_page_break = False
     add_he_xin_split = True
     first_page = True
