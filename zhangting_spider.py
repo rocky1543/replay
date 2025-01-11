@@ -311,6 +311,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         3、形成好位置：
             1、调整了几天的二波首板，N型首版
             2、趋势主升浪：强于自身的历史，强于同行，强于板块，强于大盘  
+    
     注：例如 鸡蛋能变成小鸡，石头不能
     
     条件：
