@@ -88,7 +88,7 @@ def get_lian_ban_data():
         all_data.insert(0, data)
 
     fo = open("./input/连板天梯_history.txt", "w")
-    for line in all_data[:10]:
+    for line in all_data[:5]:
         print("all_data:", line)
         fo.write(line.strip() + "\n")
 
