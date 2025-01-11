@@ -54,7 +54,7 @@ def get_day():
 
 def get_lian_ban_data():
     lian_ban_map = {}
-    fo = open("./input/连板天梯_name.txt", "w")
+    fo = open("./input/复盘核心.txt", "w")
     for line in open("./input/连板天梯.txt"):
         data = line.split("\t")
         name = data[0].strip()
