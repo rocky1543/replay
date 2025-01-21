@@ -93,7 +93,7 @@ def get_article_info(name):
                 except Exception as e:
                     logging.exception(e)
 
-                info = str(info).replace("<div class=\"pre-line\" data-v-1fbcd229=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-007e0ec9=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-69d79c05=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-e8c25eb2=\"\">", "")
@@ -183,7 +183,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
         yu_lu_list = [
-            "永远只研究拐点，只研究高低，中间的永远不必考虑",
+            "永远只研究拐点，只研究高低，中间的永远不必考虑，贪小便宜会吃大亏",
             "世间万事万物都是诸多的因缘条件和合而成，是运动的，发展的，变化的，缘起而生，缘散而灭，而非永恒固定在某种状态的，"
             "不以人的意志为转移，世人却执着于事物停留在某种状态，从而产生喜怒哀乐，悲欢离合的情绪",
             "你看这火是不是很旺，但过一会它就过去了，美好成为美好的时候，它具备的条件已经开始变化了，导致它慢慢消亡，"
