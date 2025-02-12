@@ -175,6 +175,12 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n该股炒作核心本质：\n\n" + ti_cai_text + "\n")
 
+    doc.add_page_break()
+    condition = ""
+    for line in open("./条件.txt").readlines():
+        condition = condition + line
+
+    doc.add_paragraph(condition)
     doc.save('result/复盘.docx')
 
 
