@@ -344,6 +344,5 @@ if __name__ == '__main__':
             info_map[name] = article_info
 
     print("info_map:", info_map)
-    if len(info_map) > 0:
-        # 保存到word
-        save_word_text(he_xin, name_list, info_map, "A4")
+    # 保存到word
+    save_word_text(he_xin, name_list, info_map, "A4")
