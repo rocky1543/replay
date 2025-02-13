@@ -116,5 +116,39 @@ def test6():
     print("lian_ban_data:", lian_ban_data)
 
 
+def test7():
+    from selenium import webdriver
+    driver = webdriver.Chrome()
+    driver.get("https://www.jiuyangongshe.com/search/new?k=%E6%A2%A6%E7%BD%91%E7%A7%91%E6%8A%80&type=5")
+
+    # 设置隐式等待时间为 10 秒
+    driver.implicitly_wait(1)
+
+    # 获取页面内容
+    page_source = driver.page_source
+    print("page_source_111:", page_source)
+    driver.quit()
+
+
+def test8():
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as p:
+        # 启动浏览器（以 Chromium 为例）
+        browser = p.chromium.launch()
+        page = browser.new_page()
+
+        # 打开目标网页
+        page.goto("https://www.jiuyangongshe.com/search/new?k=%E6%A2%A6%E7%BD%91%E7%A7%91%E6%8A%80&type=5")
+
+        # 等待页面加载完成（例如等待某个特定元素出现）
+        page.wait_for_selector("#target-element-id")  # 替换为目标元素的选择器
+
+        # 获取页面内容
+        content = page.content()
+        print("content：", content)
+        browser.close()
+        return content
+
+
 if __name__ == '__main__':
-    test6()
+    test8()

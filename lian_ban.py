@@ -34,9 +34,8 @@ def save_word_text(lian_ban_data, print_type="A5"):
     h1 = doc.add_heading("连板天梯", level=2)
     h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
     doc.add_paragraph("物壮则老：\n"
-                      "1、情绪转强才能顶出高度\n"
-                      "2、情绪转弱高度就会崩塌\n"
-                      "3、目的：观察主流板块中各个小周期情绪的起起伏伏，强弱转换，情绪转强的时候进，高潮的时候出")
+                      "1、情绪转强才能顶出高度, 情绪转弱高度就会崩塌\n"
+                      "2、目的：观察主流板块中各个小周期情绪的起起伏伏，强弱转换，情绪转强的时候进，高潮的时候出")
     for line in lian_ban_data:
         line = line.replace("\t", ":\n")
         line = line.replace("&", "\n")
