@@ -46,11 +46,11 @@ def get_article_info(name):
             jiucai_url = 'https://www.jiuyangongshe.com/search/new?k={}股票异动解析'.format(name)
             print("jiucai_url:", jiucai_url)
             response = requests.get(jiucai_url, headers=headers, proxies=proxies, timeout=3)
-            print("response.text:", response.text)
+            # print("response.text:", response.text)
             if response.status_code == 200 and response.text.count("股票异动解析") > 0:
                 text = response.text
 
-            print("text:", text)
+            # print("text:", text)
             time.sleep(0.2)
         except Exception as e:
             proxies = get_proxies()
@@ -336,10 +336,11 @@ if __name__ == '__main__':
     # 爬取涨停数据
     info_map = {}
     for name in name_list:
-        get_print_jiucai_url(name)
-        name_id = input("股票名字id：")
-        print("name_id:", name_id)
-        article_info = get_article_info_v2(name_id)
+        # get_print_jiucai_url(name)
+        # name_id = input("股票名字id：")
+        # print("name_id:", name_id)
+        # article_info = get_article_info_v2(name_id)
+        article_info = get_article_info(name)
         if article_info:
             info_map[name] = article_info
 
