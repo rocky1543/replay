@@ -246,6 +246,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     for line in open("./条件.txt").readlines():
         condition = condition + line
 
+    condition = condition + "\n\n"
     for line in open("./龙头断板计数.txt").readlines():
         condition = condition + line
 
