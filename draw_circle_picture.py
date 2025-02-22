@@ -33,7 +33,7 @@ def draw_picture(data_map):
     plt.xlabel('日期', fontweight='bold')
     plt.ylabel('连板高度', fontweight='bold')
     plt.title('空间周期和时间周期')
-    plt.xticks([r + bar_width for r in range(len(date_list))], date_list, rotation=20, ha='right')  # 旋转x轴标签避免重叠
+    plt.xticks([r + bar_width for r in range(len(date_list))], date_list, rotation=35, ha='right')  # 旋转x轴标签避免重叠
 
     # 添加图例
     plt.legend()
@@ -47,7 +47,7 @@ def draw_picture(data_map):
     # 设置 y 轴范围，向上留出空间
     max_value = max(height_list) + 3
     plt.ylim(0, max_value)
-    plt.xlim(-0.2, len(date_list))
+    plt.xlim(-0.2, len(date_list) + 5)
 
     # 显示图表
     plt.tight_layout()
