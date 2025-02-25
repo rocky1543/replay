@@ -24,7 +24,8 @@ def get_proxies():
 
     # 官网：https://www.qg.net/doc/1697.html
     authKey = "03WMRTUF"
-    password = "9D76ED4CAB2E"
+    password = "8911F26173C9"
+    print("proxy_ip:", proxy_ip)
     proxyUrl = "http://{}:{}@{}".format(authKey, password, proxy_ip)
     return {
         "http": proxyUrl,
