@@ -12,7 +12,7 @@ def get_code():
 
     code_list = []
 
-    f = open("./result/股票代码.txt", "w")
+    f = open("../result/股票代码.txt", "w")
     for name in open("./input/股票名称.txt").readlines():
         try:
             name = name.strip()

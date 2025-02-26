@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from download_data import download_data
+from bak.download_data import download_data
 from select_bu_zhang import get_files_in_directory
 import pandas as pd
 import akshare as ak
@@ -68,7 +68,7 @@ def get_amount_info(name):
 def get_zhang_ting_list():
     name_list = []
     name_list_sub = []
-    for line in open("./input/涨停.txt"):
+    for line in open("../input/涨停.txt"):
         if line.strip():
             data = line.strip().split(",")
             name_list_sub.append(data[0])

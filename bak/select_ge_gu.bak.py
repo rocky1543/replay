@@ -1,16 +1,13 @@
 import fnmatch
 import json
 import os
-from download_data import download_data
-from zhangting_spider import get_article_info, save_word_text
+
 import akshare as ak
 import pandas as pd
 
-from datetime import datetime, timedelta
 
-
-def load_data():
-    file_list = get_files_in_directory()
+def load_data(sz_high_price_day):
+    file_list = get_files_in_directory(sz_high_price_day)
 
     all_date_data = {}
     for file in file_list:
@@ -38,9 +35,9 @@ def load_data():
     return all_date_data
 
 
-def get_files_in_directory(sz_high_price_day=[]):
+def get_files_in_directory(sz_high_price_day):
     # 获取目录下的所有文件和子目录
-    all_items = os.listdir("./close_data")
+    all_items = os.listdir("../close_data")
 
     # 过滤出文件
     files = [item for item in all_items if fnmatch.fnmatch(item, '*.csv')]
@@ -60,7 +57,7 @@ def get_files_in_directory(sz_high_price_day=[]):
     print("all_files:", files)
     print("all_files_len:", len(files))
 
-    select_file = files[:5]
+    select_file = files[:15]
 
     for file in sz_high_price_day_file:
         if file not in select_file:
@@ -75,13 +72,15 @@ def get_files_in_directory(sz_high_price_day=[]):
 
 
 def select_lian_xu_zhang_ting(lian_ban_num):
-    all_date_data = load_data()
+    all_date_data = load_data([])
     select_code_list = []
     for code, data in all_date_data.items():
         if len(data) < 5:
             continue
         if str(code).startswith("8"):
             continue
+        # if code != "002146":
+        #     continue
 
         data = sorted(data.items(), key=lambda x: x[0])
         print("--" * 50)
@@ -110,24 +109,96 @@ def select_lian_xu_zhang_ting(lian_ban_num):
 
     code_map = get_code_map()
     name_code_map = {}
-    f = open("./result/连板股.txt", "w")
+    f = open("../result/连板股.txt", "w")
 
     result_code_list = []
-    name_list = []
     for code in select_code_list:
         code_info = code_map.get(code, {})
         name = code_info.get("名称", "")
         if name.count("ST") > 0:
             continue
-        name = name.replace(" ", "")
-        name_list.append(name)
         name_code_map[name] = code
         result_code_list.append(code)
 
     f.write(",".join(result_code_list))
     f.flush()
     print("name_code_map:", name_code_map)
+
+
+def select_ge_gu(sz_high_price_day):
+    all_date_data = load_data(sz_high_price_day)
+    result = {}
+    for code, data in all_date_data.items():
+        print("--" * 50)
+        print("code:", code)
+        print("code_data:", data)
+        if str(code).startswith("8"):
+            continue
+
+        high_price_list = []
+        sz_hp_day_price_list = []
+        for date, values in data.items():
+            high = values.get("high", None)
+            print("date:", date)
+            print("values:", values)
+            print("high:", high)
+            if not high:
+                continue
+
+            high_price_list.append(high)
+            if str(date) in sz_high_price_day:
+                sz_hp_day_price_list.append(high)
+
+        score = 0
+        if len(high_price_list) > 5:
+            high_price_avg = average(high_price_list)
+            sz_hp_day_price_avg = high_price_avg
+            if len(sz_hp_day_price_list) > 0:
+                sz_hp_day_price_avg = average(sz_hp_day_price_list)
+
+            if high_price_avg > sz_hp_day_price_avg:
+                score = (high_price_avg - sz_hp_day_price_avg) / sz_hp_day_price_avg
+
+                score = round(score, 1)
+                if score > 0:
+                    result[code] = score
+
+        print("high_price_list:", high_price_list)
+        print("sz_hp_day_price_list:", sz_hp_day_price_list)
+        print("high_price_avg:", high_price_avg)
+        print("sz_hp_day_price_avg:", sz_hp_day_price_avg)
+        print("score:", score)
+        print("--" * 50)
+
+    result = sorted(result.items(), key=lambda item: item[1], reverse=True)
+    print("result:", result)
+    print("resul_len:", len(result))
+
+    code_map = get_code_map()
+    f = open("../result/强势股.txt", "w")
+    name_list = []
+    name_code_map = {}
+    code_list = []
+    for val in result:
+        code_info = code_map.get(val[0], {})
+        name = code_info.get("名称", "")
+        if name.count("ST") > 0:
+            continue
+        name_list.append(name)
+        code_list.append(val[0])
+
+        name_code_map[name] = val[0]
+
+    f.write(",".join(code_list))
+    f.flush()
+
+    print("name_code_map:", name_code_map)
+    print("name_code_map_len:", len(name_code_map))
     return name_list
+
+
+def average(numbers):
+    return sum(numbers) / len(numbers)
 
 
 def get_code_map():
@@ -139,79 +210,12 @@ def get_code_map():
     return code_map
 
 
-def save_into_text(info_map):
-    fin = open("./result/连板股详情.txt", "w")
-    for key, val in info_map.items():
-        print("key:", key)
-        print("val:", val)
-        info = val.get("info").replace("\n", "")
-        title = val.get("title").replace("\n", "")
-
-        line = key + "\t" + title + "," + info + "\n"
-        fin.write(line)
-    fin.flush()
-    fin.close()
-
-
-def get_ge_gu_info(lian_ban_num):
-    # 下载数据
-    start_day = (datetime.now() - timedelta(days=30)).strftime('%Y%m%d')
-    end_day = datetime.now().strftime('%Y%m%d')
-    print("start_day:", start_day)
-    print("end_day:", end_day)
-    download_data(start_day, end_day)
-
-    name_list = select_lian_xu_zhang_ting(lian_ban_num)
-
-    # 爬取涨停数据
-    info_map = {}
-    for name in name_list:
-        article_info = get_article_info(name)
-        if article_info:
-            info_map[name] = article_info
-
-    print("info_map:", info_map)
-    if len(info_map) > 0:
-        # 保存到word
-        save_into_text(info_map)
-
-    # 保存到word
-    save_word_text("连板", info_map, "A4")
-
-    print("name_list:", name_list)
-
-
-def filter_by_keyword(keyword_list):
-    name_list = []
-    for line in open("./result/连板股详情.txt").readlines():
-        name, info = line.strip().split("\t")
-        # for keyword in keyword_list:
-        #     if info.count(keyword) > 0:
-        #         print("name:", name)
-        #         print("info:", info)
-        name_list.append(name.strip())
-
-    return name_list
-
-
 if __name__ == '__main__':
+    sz_high_price_day = ["20230828", "20231121", "20231229"]
+    # select_list = select_ge_gu(sz_high_price_day)
+
     # 最近15天的连板数量
     lian_ban_num = 2
-
-    get_info = True
-    if get_info:
-        get_ge_gu_info(lian_ban_num)
-
-    keyword_list = ["算力"]
-    name_list = filter_by_keyword(keyword_list)
-
-    print("name_list_len:", len(name_list))
-    print("name_list:", ",".join(name_list))
-
-    name_list_tmp = []
-    for i, name in enumerate(name_list):
-        print(name)
-        # name_list_tmp.append(name)
-        # if len(name_list_tmp) >= 50 or i == len(name_list) - 1:
-        #     print("name_list_tmp:", ",".join(name_list_tmp))
-        #     name_list_tmp = []
+    select_lian_xu_zhang_ting(lian_ban_num)
+    # print("select_list:", select_list)
+    # print("select_list_len:", len(select_list))
