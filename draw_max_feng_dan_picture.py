@@ -27,12 +27,12 @@ def draw_picture(data_map):
     r2 = [x + bar_width for x in r1]
 
     # 绘制柱状图
-    plt.bar(r2, height_list, color='#FF6B68', width=bar_width, edgecolor='grey', label='连板高度')
+    plt.bar(r2, height_list, color='#FF6B68', width=bar_width, edgecolor='grey', label='最大封单')
 
     # 添加标签和标题
     plt.xlabel('日期', fontweight='bold')
-    plt.ylabel('连板高度', fontweight='bold')
-    plt.title('空间周期和时间周期')
+    plt.ylabel('最大封单', fontweight='bold')
+    plt.title('当日最大封单')
     plt.xticks([r + bar_width for r in range(len(date_list))], date_list, rotation=35, ha='right')  # 旋转x轴标签避免重叠
 
     # 添加图例
@@ -57,28 +57,12 @@ def draw_picture(data_map):
 if __name__ == '__main__':
     # 数据
     data_map = {
-        "新炬网络-20250209": 7,
-        "新炬网络-20250210": 8,
-        "新炬网络-20250211": 9,
-        "新炬网络-20250212": 10,
-        "梦网-杭钢-20250213": 7,
-        "梦网-杭钢-20250214": 8,
-        "杭钢股份-20250217": 9,
-        "威派格-20250218": 6,
-        "杭齿前进-20250219": 6,
-        "杭齿前进-20250220": 7,
-        "杭齿前进-20250221": 8,
-        "新时达-20250224": 6,
-        "卓翼科技-20250225": 5,
-        "多个股pk-20250226": 4,
-        "多个股pk-20250227": 5,
-        "华丰股份-断板-20250228": 6,
-        "恒为科技-20250229": 4,
-        "天正电气-20250304": 4,
-        "天正电气-20250305": 5,
-        "云鼎-宁水-20250306": 4,
-        "云鼎科技-20250307": 5,
-        "信隆健康-断板日-20250310": 5,
-        "信隆健康-20250311": 6,
+        "群兴玩具-20250303": 27,
+        "跃岭股份-20250304": 8,
+        "海南华铁-20250305": 85,
+        "海南华铁-20250306": 74,
+        "南兴股份-20250307": 25,
+        "润达股份-20250310": 56,
+        "狮头股份-20250311": 30,
     }
     draw_picture(data_map)
