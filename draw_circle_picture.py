@@ -47,7 +47,7 @@ def draw_picture(data_map):
     # 设置 y 轴范围，向上留出空间
     max_value = max(height_list) + 3
     plt.ylim(0, max_value)
-    plt.xlim(-0.2, len(date_list) + 5)
+    plt.xlim(-0.2, len(date_list) + 1)
 
     # 显示图表
     plt.tight_layout()
@@ -82,5 +82,6 @@ if __name__ == '__main__':
         "信隆健康-20250311": 6,
         "信隆健康-20250312": 7,
         "信隆健康-20250313": 8,
+        "信隆健康-20250314": 9,
     }
     draw_picture(data_map)
