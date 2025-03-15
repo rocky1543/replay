@@ -242,30 +242,55 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         # 添加段落
         doc.add_paragraph(title + "\n" + info + "\n该股炒作核心本质：\n\n" + ti_cai_text + "\n")
 
-    doc.add_page_break()
+    doc.save('result/复盘.docx')
+
+    save_tj(doc)
+    save_js(doc)
+    save_gz(doc)
+
+
+def save_tj(doc):
+    delete_paragraph(doc)
+    # 条件
     condition = ""
     for line in open("./条件.txt").readlines():
         condition = condition + line
 
-    condition = condition + "\n\n"
+    doc.add_paragraph(condition)
+    doc.save('result/条件.docx')
+
+
+def save_js(doc):
+    delete_paragraph(doc)
+    # 龙头断板计数
+    condition = ""
     for line in open("./龙头断板计数.txt").readlines():
         condition = condition + line
 
     doc.add_paragraph(condition)
+    doc.save('result/龙头断板计数.docx')
 
-    doc.add_page_break()
+
+def save_gz(doc):
+    delete_paragraph(doc)
+    # 共振
     condition = ""
     for line in open("./共振.txt").readlines():
         if line.strip().startswith("回归常识"):
             doc.add_paragraph(condition)
             doc.add_page_break()
             condition = ""
-
         condition = condition + line
 
     doc.add_paragraph(condition)
+    doc.save('result/共振.docx')
 
-    doc.save('result/复盘.docx')
+
+def delete_paragraph(doc):
+    for paragraph in list(doc.paragraphs):
+        p = paragraph._element
+        p.getparent().remove(p)
+        p._p = p._element = None
 
 
 def get_timestamp(date):
