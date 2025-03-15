@@ -256,6 +256,11 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
     doc.add_page_break()
     condition = ""
     for line in open("./共振.txt").readlines():
+        if line.strip().startswith("回归常识"):
+            doc.add_paragraph(condition)
+            doc.add_page_break()
+            condition = ""
+
         condition = condition + line
 
     doc.add_paragraph(condition)
