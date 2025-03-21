@@ -19,6 +19,7 @@ def draw_bing_dian_circle_picture(data_list):
     dates = []
 
     # 数据
+    shang_zhang_jia_shu = []
     da_rou = []
     da_mian = []
     da_zhou_qi = []
@@ -26,6 +27,7 @@ def draw_bing_dian_circle_picture(data_list):
 
     for data in data_list:
         dates.append(data.get("date") + "\n" + data.get("zui_gao"))
+        shang_zhang_jia_shu.append(data.get("shang_zhang_jia_shu"))
         da_rou.append(data.get("da_rou_count"))
         da_mian.append(data.get("da_mian_count"))
         da_zhou_qi.append(data.get("da_zhou_qi_zui_gao_ban"))
@@ -35,12 +37,14 @@ def draw_bing_dian_circle_picture(data_list):
     fig, ax = plt.subplots()
 
     # 周期连板数据放大
-    da_zhou_qi_max = [val * 12 for val in da_zhou_qi]
-    xiao_zhou_qi_max = [val * 12 for val in xiao_zhou_qi]
+    shang_zhang_jia_shu_min = [val / 35.0 for val in shang_zhang_jia_shu]
+    da_zhou_qi_max = [val * 10 for val in da_zhou_qi]
+    xiao_zhou_qi_max = [val * 10 for val in xiao_zhou_qi]
 
     # 绘制数据
     ax.plot(dates, da_mian, label='大面(>-10%)', color='cyan')
     ax.plot(dates, da_rou, label='大肉(>+10%)', color='magenta')
+    ax.plot(dates, shang_zhang_jia_shu_min, label='上涨家数', color='blue')
     ax.plot(dates, da_zhou_qi_max, label='大周期(上一个最高板)', color='orange')
     ax.plot(dates, xiao_zhou_qi_max, label='小周期(当日最高板)', color='purple', linestyle='--')
 
@@ -53,12 +57,16 @@ def draw_bing_dian_circle_picture(data_list):
         ax.annotate(txt, (dates[i], da_zhou_qi_max[i]), textcoords="offset points", xytext=(0, 10), ha='center')
     for i, txt in enumerate(xiao_zhou_qi):
         ax.annotate(txt, (dates[i], xiao_zhou_qi_max[i]), textcoords="offset points", xytext=(0, 10), ha='center')
+    for i, txt in enumerate(shang_zhang_jia_shu):
+        ax.annotate(txt, (dates[i], shang_zhang_jia_shu_min[i]), textcoords="offset points", xytext=(0, 10),
+                    ha='center')
 
     # 设置图例
     ax.legend()
 
     # 设置 y 轴范围，向上留出空间
-    max_value = max(max(da_mian), max(da_rou), max(da_zhou_qi_max), max(xiao_zhou_qi_max)) + 30
+    max_value = max(max(da_mian), max(da_rou), max(da_zhou_qi_max), max(xiao_zhou_qi_max),
+                    max(shang_zhang_jia_shu_min)) + 30
     plt.ylim(0, max_value)
     plt.xlim(-1, len(da_mian) + 1)
 
@@ -76,17 +84,35 @@ if __name__ == '__main__':
         {
             "date": "20250313",
             "zui_gao": "信隆健康",
+            "shang_zhang_jia_shu": 1494,
             "da_rou_count": 47,
             "da_mian_count": 11,
             "da_zhou_qi_zui_gao_ban": 8,
             "xiao_zhou_qi_zui_gao_ban": 8,
-        },{
+        }, {
             "date": "20250314",
             "zui_gao": "信隆健康",
+            "shang_zhang_jia_shu": 4495,
             "da_rou_count": 109,
             "da_mian_count": 6,
             "da_zhou_qi_zui_gao_ban": 9,
             "xiao_zhou_qi_zui_gao_ban": 9,
+        }, {
+            "date": "20250317",
+            "zui_gao": "明牌珠宝",
+            "shang_zhang_jia_shu": 3146,
+            "da_rou_count": 83,
+            "da_mian_count": 3,
+            "da_zhou_qi_zui_gao_ban": 9,
+            "xiao_zhou_qi_zui_gao_ban": 5,
+        }, {
+            "date": "20250318",
+            "zui_gao": "明牌珠宝",
+            "shang_zhang_jia_shu": 2985,
+            "da_rou_count": 84,
+            "da_mian_count": 4,
+            "da_zhou_qi_zui_gao_ban": 9,
+            "xiao_zhou_qi_zui_gao_ban": 6,
         }
     ]
 
