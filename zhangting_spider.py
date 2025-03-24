@@ -96,7 +96,7 @@ def get_article_info(name):
                 except Exception as e:
                     logging.exception(e)
 
-                info = str(info).replace("<div class=\"pre-line\" data-v-007e0ec9=\"\">", "")
+                info = str(info).replace("<div class=\"pre-line\" data-v-314da332=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-69d79c05=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
                 info = info.replace("<div class=\"pre-line\" data-v-e8c25eb2=\"\">", "")
