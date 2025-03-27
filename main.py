@@ -150,5 +150,30 @@ def test8():
         return content
 
 
+def test9():
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # 创建数据
+    x = np.linspace(-4 * np.pi, 6 * np.pi, 1000)
+    y = np.sin(x) + (np.sin(3 * x)) / 3 + (np.sin(5 * x)) / 5
+
+    # 创建图形
+    plt.figure(figsize=(10, 6))
+
+    # 绘制曲线
+    plt.plot(x, y, label=r'$\sin(x) + \frac{\sin(3x)}{3} + \frac{\sin(5x)}{5}$', color='#FF6B68')
+
+    # 设置坐标轴
+    plt.xlim(-2 * np.pi, 6 * np.pi)
+    plt.ylim(-2, 2)
+
+    # 添加图例
+    plt.legend()
+
+    # 显示图形
+    plt.show()
+
+
 if __name__ == '__main__':
-    test8()
+    test9()
