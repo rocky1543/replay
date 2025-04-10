@@ -35,7 +35,8 @@ def save_word_text(lian_ban_data, print_type="A5"):
     h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
     doc.add_paragraph("物壮则老：\n"
                       "1、龙头断板第4天，老周期的应该就全死完了, 就可以博弈新周期的最高标了\n"
-                      "2、目的：观察主流板块中各个小周期情绪的起起伏伏，强弱转换，情绪转强的时候进，高潮的时候出")
+                      "2、目的：观察主流板块中各个小周期情绪的起起伏伏，强弱转换，情绪转强的时候进，高潮的时候出\n"
+                      "3、市场差了很久突然有一天就变好了，市场热了一段时间突然有一天就变差了，等了很久没有出手机会，突然机会就来了，所以着急没用，抓得太紧也没用")
     for line in lian_ban_data:
         line = line.replace("\t", ":\n")
         line = line.replace("&", "\n")
