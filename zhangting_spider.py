@@ -253,7 +253,7 @@ def save_tj(doc):
     delete_paragraph(doc)
     # 条件
     condition = ""
-    for line in open("./条件.txt").readlines():
+    for line in open("总结/条件.txt").readlines():
         condition = condition + line
 
     doc.add_paragraph(condition)
@@ -264,7 +264,7 @@ def save_js(doc):
     delete_paragraph(doc)
     # 龙头断板计数
     condition = ""
-    for line in open("./龙头断板计数.txt").readlines():
+    for line in open("总结/龙头断板计数.txt").readlines():
         condition = condition + line
 
     doc.add_paragraph(condition)
@@ -275,7 +275,7 @@ def save_gz(doc):
     delete_paragraph(doc)
     # 共振
     condition = ""
-    for line in open("./共振.txt").readlines():
+    for line in open("总结/共振.txt").readlines():
         if line.strip().startswith("回归常识"):
             doc.add_paragraph(condition)
             doc.add_page_break()
