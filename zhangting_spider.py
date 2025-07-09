@@ -240,7 +240,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         h1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
         # 添加段落
-        doc.add_paragraph(title + "\n" + info + "\n该股炒作核心本质：\n\n" + ti_cai_text + "\n")
+        doc.add_paragraph(title + "\n" + info + "\n\n" + ti_cai_text + "\n")
 
     # 核心
     he_xin = """
