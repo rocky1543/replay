@@ -275,6 +275,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
             *、阶段不挣钱就着急了，踏空比割肉还难受
             *、赚了钱就很随意，亏了钱就不敢出手
     """
+    doc.add_page_break()
     doc.add_paragraph(he_xin)
 
     doc.save('result/复盘.docx')
