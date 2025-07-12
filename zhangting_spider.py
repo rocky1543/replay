@@ -275,9 +275,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
                 *、徒弟：师父，以我的资质，开悟需要多久？师父：十年
                 *、徒弟：如果我加倍苦修呢？师父：二十年
                 *、徒弟：如果我夜以继日，不休不眠呢？师父：那你将永无开悟之日
-        *、无间地狱：
-            *、阶段不挣钱就着急了，踏空比割肉还难受
-            *、赚了钱就很随意，亏了钱就不敢出手
+        *、无间地狱
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
