@@ -275,6 +275,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
                 *、处于最强板块中，有板块流动性支撑
                 *、社会讨论度最高，资金活跃度最强
                 *、市场休息够了，题材休息够了，龙头休息够了
+                *、板块主升，托举龙头主升，这才是是正解
             *、把过程当做目标，眼里只有结果就会笨拙
                 *、徒弟：师父，以我的资质，开悟需要多久？师父：十年
                 *、徒弟：如果我加倍苦修呢？师父：二十年
@@ -282,6 +283,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         *、越努力越菜
             *、无间地狱
             *、急于求成，气急攻心
+            *、我可以输一万次，但最后让我赢就行，你很弱小，需要借助至刚至强者的力量
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
