@@ -282,7 +282,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         *、越努力越菜
             *、无间地狱
             *、急于求成，气急攻心
-            *、我可以输一万次，但最后让我赢就行，你很弱小，需要借助至刚至强者的力量
+            *、我可以输一万次，但最后让我赢就行，我很弱小，需要借助至刚至强者的力量
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
