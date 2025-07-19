@@ -283,6 +283,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
             *、无间地狱
             *、急于求成，气急攻心
             *、我可以输一万次，但最后让我赢就行，我很弱小，需要借助至刚至强者的力量
+            *、一期目标：减掉一些东西，降低复杂度，不然太疲劳了，目前只想轻松一点
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
