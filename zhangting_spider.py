@@ -297,7 +297,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
                 *、高潮后开始分歧
                     *、二排给机会或走弱，就会吸干三排，一排给机会或走弱，就会吸干二三排，高位分歧，会切到低位
             *、总结：
-                *、虹吸效应和束水攻沙，人气被束到哪里，能不能锁住人气，形成人气支撑
+                *、虹吸效应和束水攻沙，人气被束到哪里，那里能不能锁住人气，形成人气支撑
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
