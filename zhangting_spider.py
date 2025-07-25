@@ -299,6 +299,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
             *、思考：资金人气最后会往前排龙头收敛，战到最后的才是强者，如果你在二三排，明天前排分歧怎么办？
             *、总结：
                 *、虹吸效应和束水攻沙，人气被束到哪里，那里能不能锁住人气，形成人气支撑
+                *、能够收敛人气的标的也就两三个
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
