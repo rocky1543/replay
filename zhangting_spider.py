@@ -307,8 +307,8 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
             *、用排除法，判断明天人气在哪儿
         
     """
-    doc.add_page_break()
-    doc.add_paragraph(he_xin)
+    # doc.add_page_break()
+    # doc.add_paragraph(he_xin)
 
     doc.save('result/复盘.docx')
 
