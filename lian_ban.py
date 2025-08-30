@@ -74,23 +74,23 @@ def get_lian_ban_data():
     print("data:", data)
 
     all_data = []
-    day_list = []
-    for line in open("./input/连板天梯_history.txt"):
-        bef_day = line.strip().split("\t")[0]
-        if bef_day in day_list:
-            continue
-        day_list.append(bef_day)
-        all_data.append(line.strip())
+    # day_list = []
+    # for line in open("./input/连板天梯_history.txt"):
+    #     bef_day = line.strip().split("\t")[0]
+    #     if bef_day in day_list:
+    #         continue
+    #     day_list.append(bef_day)
+    #     all_data.append(line.strip())
+    #
+    # print("day:", day)
+    # print("day_list:", day_list)
+    # if str(day) not in day_list:
+    #     all_data.insert(0, data)
 
-    print("day:", day)
-    print("day_list:", day_list)
-    if str(day) not in day_list:
-        all_data.insert(0, data)
-
-    fo = open("./input/连板天梯_history.txt", "w")
-    for line in all_data[:6]:
-        print("all_data:", line)
-        fo.write(line.strip() + "\n")
+    # fo = open("./input/连板天梯_history.txt", "w")
+    # for line in all_data[:6]:
+    #     print("all_data:", line)
+    #     fo.write(line.strip() + "\n")
 
     return all_data
 
