@@ -331,8 +331,6 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
             *、退潮的结果就是重新洗牌，推到重来，筛选掉一部分，保留一部分
             *、再爆炸的行情，最多也就是三五天，螺旋式前进是必然规律
             *、在高潮中永远抱着敬畏的心态，在绝望中永远要充满希望
-        *、复盘：
-            
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
