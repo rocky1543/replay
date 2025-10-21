@@ -188,7 +188,7 @@ def get_today():
     return now.strftime("%Y-%m-%d")
 
 
-def save_word_text(he_xin, name_list, info_map, print_type="A5"):
+def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
     # 创建文档
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
@@ -231,7 +231,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
         title = val.get("title")
         ti_cai_text = val.get("ti_cai_text")
 
-        if key not in he_xin and add_he_xin_split:
+        if key not in lian_ban and add_he_xin_split:
             add_he_xin_split = False
             doc.add_paragraph("- " * 90)
 
@@ -341,7 +341,7 @@ def save_word_text(he_xin, name_list, info_map, print_type="A5"):
             *、下跌的第一天谨慎弄，第二天小心弄，第三天大胆弄
             *、小涨小跌，大涨大跌，努力避开大跌
             *、只是一个闯关游戏，生活该干嘛干嘛，一事顺事事顺
-            *、情绪变化永远落后于价格变化
+            *、情绪变化永远落后于价格变化，农民需要等到春天来的时候才种地，这就是规律
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
@@ -463,12 +463,12 @@ def get_name_list(file, filter_list):
 
 
 def get_replay_name_list():
-    he_xin = get_name_list("input/复盘核心.txt", [])
-    zhang_ting = get_name_list("./input/涨停.txt", he_xin)
-    print("he_xin:", he_xin)
-    print("zhang_ting:", zhang_ting)
+    lian_ban = get_name_list("input/连板股.txt", [])
+    fu_pan = get_name_list("./input/复盘股.txt", lian_ban)
+    print("lian_ban:", lian_ban)
+    print("fu_pan:", fu_pan)
 
-    return he_xin, he_xin + zhang_ting
+    return lian_ban, lian_ban + fu_pan
 
 
 if __name__ == '__main__':
@@ -477,7 +477,7 @@ if __name__ == '__main__':
     get_code_map()
 
     # 获取题材涨停的个股
-    he_xin, name_list = get_replay_name_list()
+    lian_ban, name_list = get_replay_name_list()
     print("name_list:", name_list)
 
     # 爬取涨停数据
@@ -493,4 +493,4 @@ if __name__ == '__main__':
 
     print("info_map:", info_map)
     # 保存到word
-    save_word_text(he_xin, name_list, info_map, "A4")
+    save_word_text(lian_ban, name_list, info_map, "A4")
