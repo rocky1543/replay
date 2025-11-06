@@ -342,6 +342,7 @@ def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
             *、思考的时候，也要先大后小，再自上而下
             *、就跟打游戏一样，别人的技能没放完，你就贸然出击不就是找死嘛
             *、市场一直重复着从安静到沸腾，再从沸腾到安静的过程，所以所有的买点应该都是在市场安静的时候
+            *、涨多了都是风险，跌多了都是机会，多在低位，大杀之后，调整好之后寻找机会
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
