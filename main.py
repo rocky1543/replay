@@ -100,7 +100,7 @@ def test5():
 
 def test6():
     lian_ban_map = {}
-    for line in open("input/连板股.txt"):
+    for line in open("input/连板情绪.txt"):
         data = line.split("\t")
         # print("data:", data)
         name = data[0].strip()

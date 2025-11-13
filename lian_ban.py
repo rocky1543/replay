@@ -54,8 +54,8 @@ def get_day():
 
 def get_lian_ban_data():
     lian_ban_map = {}
-    fo = open("input/复盘股.txt", "w")
-    for line in open("input/连板股.txt"):
+    fo = open("input/大盘核心.txt", "w")
+    for line in open("input/连板情绪.txt"):
         data = line.split("\t")
         name = data[0].strip()
         ban_num = data[-1].strip()

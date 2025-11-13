@@ -340,8 +340,8 @@ def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
             *、思考的时候，也要先大后小，再自上而下
             *、就跟打游戏一样，别人的技能没放完，你就贸然出击不就是找死嘛
             *、市场一直重复着从安静到沸腾，再从沸腾到安静的过程，所以所有的买点应该都是在市场安静的时候
-            *、涨多了都是风险，跌多了都是机会，多在低位，大杀之后，调整好之后寻找机会
-            *、没有只涨不跌的波浪，涨多了都是风险，也没有只跌不涨的波浪，跌多了都是机会
+            *、没有只涨不跌or只跌不涨的波浪，涨多了都是风险，跌多了都是机会，多在低位，大杀之后寻找机会
+            *、现在的问题：找不到最强的方向，最强的东西，不能确定持续性，不能确定市场调好了没有
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
@@ -463,8 +463,8 @@ def get_name_list(file, filter_list):
 
 
 def get_replay_name_list():
-    lian_ban = get_name_list("input/连板股.txt", [])
-    fu_pan = get_name_list("./input/复盘股.txt", lian_ban)
+    lian_ban = get_name_list("input/连板情绪.txt", [])
+    fu_pan = get_name_list("input/大盘核心.txt", lian_ban)
     print("lian_ban:", lian_ban)
     print("fu_pan:", fu_pan)
 
