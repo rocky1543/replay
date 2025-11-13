@@ -346,11 +346,25 @@ def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
     doc.add_page_break()
     doc.add_paragraph(he_xin)
 
+    save_sc(doc)
+
     doc.save('result/复盘.docx')
 
     save_tj(doc)
     save_js(doc)
     save_gz(doc)
+
+
+def save_sc(doc):
+    # delete_paragraph(doc)
+    doc.add_page_break()
+    # 条件
+    condition = ""
+    for line in open("./市场2部分.txt").readlines():
+        condition = condition + line
+
+    doc.add_paragraph(condition)
+    # doc.save('result/条件.docx')
 
 
 def save_tj(doc):
