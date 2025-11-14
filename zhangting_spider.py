@@ -329,6 +329,7 @@ def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
     doc.add_paragraph(he_xin)
 
     save_sc(doc)
+    save_dui(doc)
 
     doc.save('result/复盘.docx')
 
@@ -343,6 +344,18 @@ def save_sc(doc):
     # 条件
     condition = ""
     for line in open("./市场2部分.txt").readlines():
+        condition = condition + line
+
+    doc.add_paragraph(condition)
+    # doc.save('result/条件.docx')
+
+
+def save_dui(doc):
+    # delete_paragraph(doc)
+    doc.add_page_break()
+    # 条件
+    condition = ""
+    for line in open("./坚持做对的事情.txt").readlines():
         condition = condition + line
 
     doc.add_paragraph(condition)
