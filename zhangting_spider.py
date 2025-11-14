@@ -328,8 +328,8 @@ def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
     doc.add_page_break()
     doc.add_paragraph(he_xin)
 
-    save_sc(doc)
     save_dui(doc)
+    save_sc(doc)
 
     doc.save('result/复盘.docx')
 
