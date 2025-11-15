@@ -355,7 +355,7 @@ def save_dui(doc):
     doc.add_page_break()
     # 条件
     condition = ""
-    for line in open("./坚持做对的事情.txt").readlines():
+    for line in open("每天计划.txt").readlines():
         condition = condition + line
 
     doc.add_paragraph(condition)
