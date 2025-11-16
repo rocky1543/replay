@@ -188,7 +188,7 @@ def get_today():
     return now.strftime("%Y-%m-%d")
 
 
-def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
+def save_word_text(bu_zhang_long, lian_ban, name_list, info_map, print_type="A5"):
     # 创建文档
     doc = Document()
     doc.styles['Normal'].font.name = 'Times New Roman'
@@ -212,6 +212,7 @@ def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
 
     # 题材
     add_page_break = False
+    add_lian_ban_split = True
     add_he_xin_split = True
     for key in name_list:
         val = info_map.get(key, None)
@@ -231,7 +232,12 @@ def save_word_text(lian_ban, name_list, info_map, print_type="A5"):
         title = val.get("title")
         ti_cai_text = val.get("ti_cai_text")
 
-        if key not in lian_ban and add_he_xin_split:
+        if key not in bu_zhang_long and add_lian_ban_split and add_he_xin_split:
+            add_lian_ban_split = False
+            doc.add_paragraph("- " * 90)
+
+        if key not in lian_ban and key not in bu_zhang_long \
+                and not add_lian_ban_split and add_he_xin_split:
             add_he_xin_split = False
             doc.add_paragraph("- " * 90)
 
@@ -472,12 +478,15 @@ def get_name_list(file, filter_list):
 
 
 def get_replay_name_list():
-    lian_ban = get_name_list("input/连板情绪.txt", [])
-    fu_pan = get_name_list("input/大盘核心.txt", lian_ban)
+    bu_zhang_long = get_name_list("input/1-补涨龙&龙头属性.txt", [])
+    lian_ban = get_name_list("input/2-连板情绪.txt", bu_zhang_long)
+    filter_list = bu_zhang_long + lian_ban
+    fu_pan = get_name_list("input/3-大盘核心.txt", filter_list)
+    print("bu_zhang_long:", bu_zhang_long)
     print("lian_ban:", lian_ban)
     print("fu_pan:", fu_pan)
 
-    return lian_ban, lian_ban + fu_pan
+    return bu_zhang_long, lian_ban, bu_zhang_long + lian_ban + fu_pan
 
 
 if __name__ == '__main__':
@@ -486,7 +495,7 @@ if __name__ == '__main__':
     get_code_map()
 
     # 获取题材涨停的个股
-    lian_ban, name_list = get_replay_name_list()
+    bu_zhang_long, lian_ban, name_list = get_replay_name_list()
     print("name_list:", name_list)
 
     # 爬取涨停数据
@@ -502,4 +511,4 @@ if __name__ == '__main__':
 
     print("info_map:", info_map)
     # 保存到word
-    save_word_text(lian_ban, name_list, info_map, "A4")
+    save_word_text(bu_zhang_long, lian_ban, name_list, info_map, "A4")
