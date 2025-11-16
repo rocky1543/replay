@@ -469,7 +469,7 @@ def get_name_list(file, filter_list):
 
 
 def get_replay_name_list():
-    bu_zhang_long = get_name_list("input/1-补涨龙&龙头属性.txt", [])
+    bu_zhang_long = get_name_list("input/1-补涨龙.txt", [])
     lian_ban = get_name_list("input/2-连板情绪.txt", bu_zhang_long)
     filter_list = bu_zhang_long + lian_ban
     fu_pan = get_name_list("input/3-大盘核心.txt", filter_list)
