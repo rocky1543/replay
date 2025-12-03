@@ -341,6 +341,7 @@ def save_word_text(bu_zhang_long, lian_ban, name_list, info_map, print_type="A5"
             *、做龙头就是做二板之上最有人气标的，人们只记得第一名，谁会在意第二名，龙头自带人气
             *、总结就是：人气是个股的那一口气，气足才能活
             *、二板以上只做龙头，套利只做首板
+            *、拳头收回来再打出去才有力气，伸出去一半了，已经卸力了
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
