@@ -330,6 +330,7 @@ def save_word_text(bu_zhang_long, lian_ban, name_list, info_map, print_type="A5"
             *、做龙头就是做二板之上最有人气标的，即：只做第一名，二板以上只做龙头
             *、拳头收回来再打出去才有力气，伸出去一半了，已经卸力了
             *、能否继续看的逻辑：有曝光，有流量，有社会讨论度，人气就会持续，题材和龙头就能持续
+            *、一轮行情的流程：1、龙头上涨；2、龙头补涨；3、题材切换
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
