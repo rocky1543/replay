@@ -335,6 +335,9 @@ def save_word_text(bu_zhang_long, lian_ban, name_list, info_map, print_type="A5"
             *、复盘看看当天炒什么题材，再看看有没有可能二波的
             *、盘中看看今天炒什么题材，看看有没有【首板】可能二波的
             *、方向：龙头，补涨，补涨龙，切换新题材，老人气核心
+            *、老师主要做的还是二波，找对方向，做二波，图已经做好了，资金已经准备好了，就等方向切过来
+            *、指数不跌了就大胆干，指数不好，趋势没戏，退潮期，不要盲目大仓位去做
+            
     """
     doc.add_page_break()
     doc.add_paragraph(he_xin)
