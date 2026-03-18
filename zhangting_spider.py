@@ -164,7 +164,7 @@ def get_article_info_v2(name_id):
             info = str(info).replace("<div class=\"pre-line\" data-v-007e0ec9=\"\">", "")
             info = info.replace("<div class=\"pre-line\" data-v-69d79c05=\"\">", "")
             info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
-            info = info.replace("<div class=\"pre-line\" data-v-e8c25eb2=\"\">", "")
+            info = info.replace("<div class=\"pre-line\" data-v-234fd4b4=\"\">", "")
             info = info.replace("</div>", "")
             code_info = code_map.get(name, None)
             tag = zhang_ting_di_wei_tag.get(name, "")
