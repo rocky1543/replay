@@ -163,7 +163,7 @@ def get_article_info_v2(name_id):
 
             info = str(info).replace("<div class=\"pre-line\" data-v-007e0ec9=\"\">", "")
             info = info.replace("<div class=\"pre-line\" data-v-69d79c05=\"\">", "")
-            info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
+            info = info.replace("<div class=\"pre-line\" data-v-338742de=\"\">", "")
             info = info.replace("<div class=\"pre-line\" data-v-234fd4b4=\"\">", "")
             info = info.replace("</div>", "")
             code_info = code_map.get(name, None)
@@ -254,7 +254,7 @@ def save_word_text(bu_zhang_long, lian_ban, name_list, info_map, print_type="A5"
 *、觉悟的最大修为就是学会休息，盈利不是你抓住了很多机会，而是你放弃了更多的机会，学会give up吧
 *、学会赚小钱，才能够赚大钱，空仓不是靠忍住，而是条件没形成，看不上
 *、一个简单的高抛低吸游戏而已，为什么玩不赢呢，为什么需要那么多支撑呢，是因为你过分的在乎它
-*、最折磨人的从来不是明确的坏，而是不够明确的好，一个月也就那一两次运气，其他时间的机会都不属于你
+*、最折磨人的从来不是明确的坏，而是好得不够出众，一个月也就那一两次运气而已
 *、第一天很重要：
     *、炒的【这段情绪】：风来了，情绪就来了，人就聚集了
     *、你要做的是：尽量在每个方向情绪开始的时候，第一天参与进去，尽量保证当天买点不亏钱
