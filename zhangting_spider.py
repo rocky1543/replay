@@ -97,11 +97,8 @@ def get_article_info(name):
                 except Exception as e:
                     logging.exception(e)
 
-                info = str(info).replace("<div class=\"pre-line\" data-v-314da332=\"\">", "")
-                info = info.replace("<div class=\"pre-line\" data-v-69d79c05=\"\">", "")
-                info = info.replace("<div class=\"pre-line\" data-v-2d5a9c93=\"\">", "")
-                info = info.replace("<div class=\"pre-line\" data-v-e8c25eb2=\"\">", "")
-                info = info.replace("</div>", "")
+                info = str(info)
+                info = clean_preline_divs(info)
                 code_info = code_map.get(name, None)
                 tag = zhang_ting_di_wei_tag.get(name, "")
                 if code_info:
@@ -126,62 +123,10 @@ def get_print_jiucai_url(name):
     print("jiucai_url:", jiucai_url)
 
 
-def get_article_info_v2(name_id):
-    proxies = get_proxies()
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-    }
-    print("proxies:", proxies)
-    for _ in range(10):
-        try:
-            href_full_url = "https://www.jiuyangongshe.com/a/{}".format(name_id)
-            print("href_full_url:", href_full_url)
-            response = requests.get(href_full_url, headers=headers, proxies=proxies, timeout=3)
-            text = ""
-            if response.status_code == 200:
-                text = response.text
-
-            doc = pq(text)
-            title = doc(".fs28-bold")
-            title = title.text()
-            print("title:", title)
-            print("name:", name)
-            print("find:", title.find(name))
-            if title.find(name) <= 0:
-                break
-
-            ti_cai_text = doc(".mt40  > div.text-justify")
-            ti_cai_text = ti_cai_text.text()
-            print("ti_cai_text:", ti_cai_text)
-
-            info = doc(".pre-line")
-            date = get_today()
-            try:
-                date = doc(".date").text().split(" ")[0]
-            except Exception as e:
-                logging.exception(e)
-
-            info = str(info).replace("<div class=\"pre-line\" data-v-007e0ec9=\"\">", "")
-            info = info.replace("<div class=\"pre-line\" data-v-69d79c05=\"\">", "")
-            info = info.replace("<div class=\"pre-line\" data-v-338742de=\"\">", "")
-            info = info.replace("<div class=\"pre-line\" data-v-234fd4b4=\"\">", "")
-            info = info.replace("</div>", "")
-            code_info = code_map.get(name, None)
-            tag = zhang_ting_di_wei_tag.get(name, "")
-            if code_info:
-                change = code_info.get("涨跌幅", None)
-                code = code_info.get("代码", None)
-                print("change:", change)
-                print("code:", code)
-                if code and change and info:
-                    info_arr = info.split("\n", 1)
-                    info_0 = info_arr[0] + "  " + str(change) + "%" + "  " + tag + "  " + str(code)
-                    info = info_0 + "\n" + info_arr[1]
-            print("info:", info)
-            return {"info": info, "date": date, "title": title, "ti_cai_text": ti_cai_text}
-        except Exception as e:
-            proxies = get_proxies()
-            logging.exception(e)
+def clean_preline_divs(html_string):
+    """移除 pre-line div标签，保留内容"""
+    pattern = r'<div class="pre-line" data-v-[a-zA-Z0-9]+="">(.*?)</div>'
+    return re.sub(pattern, r'\1', html_string, flags=re.DOTALL)
 
 
 def get_today():

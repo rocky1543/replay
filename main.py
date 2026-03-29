@@ -175,5 +175,15 @@ def test9():
     plt.show()
 
 
+def clean_preline_divs(html_string):
+    import re
+    """移除 pre-line div标签，保留内容"""
+    pattern = r'<div class="pre-line" data-v-[a-zA-Z0-9]+="">(.*?)</div>'
+    return re.sub(pattern, r'\1', html_string, flags=re.DOTALL)
+
+
 if __name__ == '__main__':
-    test9()
+    # 使用示例
+    html = '<div class="pre-line" data-v-338742de="">需要的内容</div>'
+    result = clean_preline_divs(html)
+    print(result)  # 输出: 需要的内容
