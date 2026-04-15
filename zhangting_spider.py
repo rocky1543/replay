@@ -47,7 +47,7 @@ def get_article_info(name):
         try:
             jiucai_url = 'https://www.jiuyangongshe.com/search/new?k={}股票异动解析'.format(name)
             print("jiucai_url:", jiucai_url)
-            response = requests.get(jiucai_url, headers=headers, proxies=proxies, timeout=3)
+            response = requests.get(jiucai_url, headers=headers, proxies=proxies, timeout=6)
             # print("response.text:", response.text)
             if response.status_code == 200 and response.text.count("股票异动解析") > 0:
                 text = response.text
@@ -72,7 +72,7 @@ def get_article_info(name):
             try:
                 href_full_url = "https://www.jiuyangongshe.com{}".format(href)
                 print("href_full_url:", href_full_url)
-                response = requests.get(href_full_url, headers=headers, proxies=proxies, timeout=3)
+                response = requests.get(href_full_url, headers=headers, proxies=proxies, timeout=6)
                 text = ""
                 if response.status_code == 200:
                     text = response.text
