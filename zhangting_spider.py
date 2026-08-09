@@ -272,21 +272,21 @@ def save_word_text(bu_zhang_long, lian_ban, name_list, info_map, print_type="A5"
     *、资金总是往前排切，往低位切，所以前排和低位才是安全的，所以目标要么前排核心，要么低位首板
     *、你关注的颗粒度应该是每一个交易，一定要删除，简化到可以落地，如果条件不收敛，就永远总结不出规律
     """
-    doc.add_page_break()
-    doc.add_paragraph(he_xin)
+    # doc.add_page_break()
+    # doc.add_paragraph(he_xin)
 
-    save_dui(doc)
+    # save_dui(doc)
 
     # 方法三：同时设置宽高（保持比例）
-    doc.add_picture('./市场资金潮汐.jpg', width=Inches(4))
+    # doc.add_picture('./市场资金潮汐.jpg', width=Inches(4))
     # doc.add_picture('./市场资金潮汐.jpg', width=Inches(3), height=Inches(2))
     # doc.add_picture('./市场资金潮汐.jpg')
 
     doc.save('result/复盘.docx')
 
-    save_tj(doc)
-    save_js(doc)
-    save_gz(doc)
+    # save_tj(doc)
+    # save_js(doc)
+    # save_gz(doc)
 
 
 def save_sc(doc):
