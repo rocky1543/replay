@@ -840,7 +840,7 @@
      "article": {
       "article_id": "3y5dqccptn9",
       "comment_count": 0,
-      "like_count": 0,
+      "like_count": 1,
       "create_time": "2026-08-14 15:34:01",
       "user_id": "1",
       "is_like": 0,
@@ -3286,5 +3286,5 @@
   }
  ],
  "errCode": "0",
- "serverTime": 1786775117
+ "serverTime": 1786775801
 }
