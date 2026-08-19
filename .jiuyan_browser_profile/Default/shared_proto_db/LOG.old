@@ -1,2 +1,3 @@
-2026/08/15-14:20:31.455 616e87 Creating DB /Users/xiaoguaiguai/Downloads/myself/blued/workspaces/replay/.jiuyan_browser_profile/Default/shared_proto_db since it was missing.
-2026/08/15-14:20:31.456 616e87 Reusing MANIFEST /Users/xiaoguaiguai/Downloads/myself/blued/workspaces/replay/.jiuyan_browser_profile/Default/shared_proto_db/MANIFEST-000001
+2026/08/17-15:48:06.444 618f6f Reusing MANIFEST /Users/xiaoguaiguai/Downloads/myself/blued/workspaces/replay/.jiuyan_browser_profile/Default/shared_proto_db/MANIFEST-000001
+2026/08/17-15:48:06.444 618f6f Recovering log #3
+2026/08/17-15:48:06.445 618f6f Reusing old log /Users/xiaoguaiguai/Downloads/myself/blued/workspaces/replay/.jiuyan_browser_profile/Default/shared_proto_db/000003.log 
